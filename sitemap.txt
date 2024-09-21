@@ -1,2 +1,7 @@
+https://ydw-item.github.io.git/2024/09/21/I2C/
 https://ydw-item.github.io.git/2024/09/14/hello-world/
 https://ydw-item.github.io.git/
+https://ydw-item.github.io.git/tags/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/
+https://ydw-item.github.io.git/tags/I2C/
+https://ydw-item.github.io.git/categories/STM32/
+https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/
