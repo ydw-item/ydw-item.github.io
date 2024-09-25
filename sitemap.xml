@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ydw-item.github.io.git/2024/09/22/LVGL_1_%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1./</loc>
+    
+    <lastmod>2024-09-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ydw-item.github.io.git/2024/09/21/I2C/</loc>
     
     <lastmod>2024-09-20</lastmod>
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/2024/09/22/LVGL_1_%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1./</loc>
+    <loc>https://ydw-item.github.io.git/2024/09/22/LVGL-1/</loc>
     
     <lastmod>2024-09-01</lastmod>
     
@@ -68,14 +77,14 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/LVGL/</loc>
+    <loc>https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2024-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/</loc>
+    <loc>https://ydw-item.github.io.git/categories/LVGL/</loc>
     <lastmod>2024-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
