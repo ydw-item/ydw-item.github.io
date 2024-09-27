@@ -6,7 +6,7 @@
   <link href="https://ydw-item.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://ydw-item.github.io.git/"/>
-  <updated>2024-09-21T16:18:19.000Z</updated>
+  <updated>2024-09-27T16:08:49.000Z</updated>
   <id>https://ydw-item.github.io.git/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GPIO基础知识</title>
+    <link href="https://ydw-item.github.io.git/2024/09/28/GPIO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>https://ydw-item.github.io.git/2024/09/28/GPIO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
+    <published>2024-09-27T16:07:09.000Z</published>
+    <updated>2024-09-27T16:08:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>GPIO：通用型输入输出，可以<code>控制输入输出</code>的STM32引脚</strong></p><table><thead><tr><th align="center"><strong>浮空输入</strong></th><th align="center"><strong>Input floating</strong></th></tr></thead><tbody><tr><td align="center"><strong>拉上输入</strong></td><td align="center"><strong>Input pull-up</strong></td></tr><tr><td align="center"><strong>下拉输入</strong></td><td align="center"><strong>Input-pull-down</strong></td></tr><tr><td align="center"><strong>模拟输入</strong></td><td align="center"><strong>Anglog</strong></td></tr><tr><td align="center"><strong>开漏输出</strong></td><td align="center"><strong>Output open-drain</strong></td></tr><tr><td align="center"><strong>推挽输出</strong></td><td align="center"><strong>Output push-pull</strong></td></tr><tr><td align="center"><strong>推翻复用</strong></td><td align="center"><strong>Alternate function push-pull</strong></td></tr><tr><td align="center"><strong>开漏复用</strong></td><td align="center"><strong>Alternate function open-drain</strong></td></tr></tbody></table><p><strong>输出模式：<code>控制端口输出高电平低电平</code>，用于驱动LED，蜂鸣器等，若十大功率器件，则要加上驱动器（小电流控制大电流）</strong></p><p><strong>输入模式：<code>读取端口的高低电平</code>，用于读取外接按键，外接模拟信号的输入，ADC电压采集，模拟通信协议接受数据等</strong></p><p><img src="/2024/09/28/GPIO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927202349798.png" alt="image-20240927202349798"></p><ul><li><strong>端口位设置&#x2F;清除寄存器(GPIOx_BSRR)(x&#x3D;A…E):低位用于设置ODRy位为1，高位用于设置ODRy位为0</strong></li><li><strong>端口输出数据寄存器(GPIOx_ODR)(x&#x3D;A..E):可以分别地对各个ODR位进行独立的设置&#x2F;清除</strong></li></ul><h1 id="一、推挽输出"><a href="#一、推挽输出" class="headerlink" title="一、推挽输出"></a>一、推挽输出</h1><ul><li><p><strong>当输出控制为1时</strong></p><p>  <strong>P-MOS导通，N-MOS不导通，输出<code>高电平</code></strong></p></li><li><p><strong>当输出控制为0时</strong></p></li></ul><p>​<strong>P-MOS永远不导通，N-MOS导通，输出低电平</strong></p><ul><li><strong>引脚<code>电流流向单片机內部</code>或着<code>从单片机内部流向外部</code></strong></li><li><strong>可以同时从输入寄存器读取引脚状态</strong></li><li><strong>使用场所</strong></li></ul><ol><li><strong>驱动能力需求高的场合</strong></li><li><strong>高速信号传输</strong></li><li><strong>无需共用信号线的场合</strong></li></ol><h1 id="二、开漏输出"><a href="#二、开漏输出" class="headerlink" title="二、开漏输出"></a>二、开漏输出</h1><ul><li><p><strong>输出控制为0</strong></p><p>  <strong>P-MOS永远关闭，N-MOS导通，  输出低电平</strong></p></li><li><p><strong>输出控制为1</strong></p></li></ul><p>​<strong>P-MOS永远不导通,N-MOS也不导通，输出高阻态</strong></p><p>​<strong>此时要想引脚输出高电平或低电平，需要在单片机外部，接上拉或下拉电阻</strong></p><p>​电阻很大–弱上拉     电阻很小–强上拉</p><ul><li><strong>可以同时从输入寄存器读取引脚状态</strong></li><li><strong>使用场所</strong></li></ul><ol><li><p><strong>多个设备共用信号线</strong></p></li><li><p><strong>不同电压系统之间的接口</strong></p></li><li><p><strong>需要外部上拉电阻来确定逻辑高电平的场合</strong></p></li><li><p><strong>工作时，两个MOS管交替工作来驱动负载。</strong></p><p> <strong>输出1时，上部晶体管导通将电流推向负载</strong></p></li></ol><p>​<strong>输出0时，下部集体管导通将电流拉回地线</strong></p><h1 id="三、复用功能"><a href="#三、复用功能" class="headerlink" title="三、复用功能"></a>三、复用功能</h1><p><strong>引脚不作为IO口来使用，用作其它功能</strong></p><h1 id="四、上拉和下拉输入"><a href="#四、上拉和下拉输入" class="headerlink" title="四、上拉和下拉输入"></a>四、上拉和下拉输入</h1><p><strong>读取引脚的电平</strong></p><ul><li><p><strong>当IO输入电压大于VDD，二极管导通，此时VIO &#x3D;&#x3D; VDD，保护芯片</strong></p></li><li><p><strong>当IO输入电压小于VDD，二极管导通，此时VIO &#x3D;&#x3D; VSS，保护芯片</strong>  </p></li><li><p><strong>该模式下输出功能无效</strong></p></li><li><p><strong>施密特触发器作用</strong></p></li></ul><p><img src="/2024/09/28/GPIO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240928000612157.png" alt="image-20240928000612157"></p><h1 id="五、模拟输入"><a href="#五、模拟输入" class="headerlink" title="五、模拟输入"></a>五、模拟输入</h1><ul><li><p><strong>施密特触发器禁用，输入数据寄存器值为0</strong></p></li><li><p><strong>ADC</strong></p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;GPIO：通用型输入输出，可以&lt;code&gt;控制输入输出&lt;/code&gt;的STM32引脚&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;&lt;strong&gt;浮空输入&lt;/strong&gt;&lt;/th&gt;
+&lt;th al</summary>
+      
+    
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/categories/STM32/"/>
+    
+    <category term="外设" scheme="https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/"/>
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LVGL-2</title>
+    <link href="https://ydw-item.github.io.git/2024/09/25/LVGL-2/"/>
+    <id>https://ydw-item.github.io.git/2024/09/25/LVGL-2/</id>
+    <published>2024-09-25T10:13:55.000Z</published>
+    <updated>2024-09-25T16:18:19.000Z</updated>
+    
+    
+    
+    
+    <category term="LVGL" scheme="https://ydw-item.github.io.git/categories/LVGL/"/>
+    
+    
+    <category term="LVGL" scheme="https://ydw-item.github.io.git/tags/LVGL/"/>
+    
+  </entry>
   
   <entry>
     <title>LVGL(一)基础对象</title>
@@ -64,7 +112,7 @@
     
     <category term="STM32" scheme="https://ydw-item.github.io.git/categories/STM32/"/>
     
-    <category term="通讯协议" scheme="https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
+    <category term="通信协议" scheme="https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
     
     
     <category term="通讯协议" scheme="https://ydw-item.github.io.git/tags/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
