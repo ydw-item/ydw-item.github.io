@@ -1,0 +1,4 @@
+.loading-img {
+  background: /image/洒水水.jpg;
+  background-size: cover;
+}

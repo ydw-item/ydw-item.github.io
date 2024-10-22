@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LVGL(一)基础对象 | The personal blog of 洒水水</title><meta name="author" content="洒水水"><meta name="copyright" content="洒水水"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、创建对象 在屏幕上创建开关部件switch  1lv_obj_t* switch1 &#x3D; lv_switch_create(lv_scr_act());   在按键switch1上创建开关部件switch2  1lv_obj_t* switch2 &#x3D; lv_switch_create(switch1);  二、设置大小 设置宽度  1lv_obj_set_width(lv_obj_t * obj">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LVGL(一)基础对象">
+<meta property="og:url" content="https://ydw-item.github.io.git/2024/09/22/LVGL-1-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="The personal blog of 洒水水">
+<meta property="og:description" content="一、创建对象 在屏幕上创建开关部件switch  1lv_obj_t* switch1 &#x3D; lv_switch_create(lv_scr_act());   在按键switch1上创建开关部件switch2  1lv_obj_t* switch2 &#x3D; lv_switch_create(switch1);  二、设置大小 设置宽度  1lv_obj_set_width(lv_obj_t * obj">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ydw-item.github.io.git/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg">
+<meta property="article:published_time" content="2024-09-21T16:00:19.000Z">
+<meta property="article:modified_time" content="2024-09-21T16:18:19.000Z">
+<meta property="article:author" content="洒水水">
+<meta property="article:tag" content="LVGL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ydw-item.github.io.git/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"><link rel="shortcut icon" href="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"><link rel="canonical" href="https://ydw-item.github.io.git/2024/09/22/LVGL-1-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LVGL(一)基础对象',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-22 00:18:19'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="The personal blog of 洒水水" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/image/%E8%83%8C%E6%99%AF_6.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="The personal blog of 洒水水"><img class="site-icon" src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"/><span class="site-name">The personal blog of 洒水水</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LVGL(一)基础对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-21T16:00:19.000Z" title="发表于 2024-09-22 00:00:19">2024-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-21T16:18:19.000Z" title="更新于 2024-09-22 00:18:19">2024-09-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/LVGL/">LVGL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LVGL(一)基础对象"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、创建对象"><a href="#一、创建对象" class="headerlink" title="一、创建对象"></a>一、创建对象</h1><ul>
+<li><strong>在屏幕上创建开关部件switch</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">lv_obj_t</span>* switch1 = lv_switch_create(lv_scr_act());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>在按键switch1上创建开关部件switch2</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">lv_obj_t</span>* switch2 = lv_switch_create(switch1);</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、设置大小"><a href="#二、设置大小" class="headerlink" title="二、设置大小"></a>二、设置大小</h1><ul>
+<li><strong>设置宽度</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_width(<span class="type">lv_obj_t</span> * obj, <span class="type">lv_coord_t</span> width);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>设置高度</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_height(<span class="type">lv_obj_t</span> * obj, <span class="type">lv_coord_t</span> height);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>同时设置宽度和高度</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_size(<span class="type">lv_obj_t</span> * obj, <span class="type">lv_coord_t</span> width, <span class="type">lv_coord_t</span> height);</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、设置位置"><a href="#三、设置位置" class="headerlink" title="三、设置位置"></a>三、设置位置</h1><ul>
+<li><strong>原点为(0,0)，X轴向右，Y轴向下</strong></li>
+<li><strong>若屏幕像素为800*480，则原点的对点为(799,470)</strong></li>
+<li><strong>子类以父类的左上角为原点，超出父对象的区域不显示</strong></li>
+<li><strong>设置X轴坐标</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_x(<span class="type">lv_obj_t</span> * obj, <span class="type">lv_coord_t</span> x);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>设置Y轴坐标</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_y(<span class="type">lv_obj_t</span> * obj, <span class="type">lv_coord_t</span> y);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>同时设置X、Y轴坐标</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_pos(<span class="type">lv_obj_t</span> * obj, <span class="type">lv_coord_t</span> x, <span class="type">lv_coord_t</span> y);</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、设置对齐方式"><a href="#四、设置对齐方式" class="headerlink" title="四、设置对齐方式"></a>四、设置对齐方式</h1><h2 id="1-参照父对象对齐"><a href="#1-参照父对象对齐" class="headerlink" title="1. 参照父对象对齐"></a>1. 参照父对象对齐</h2><ul>
+<li>参照父对象对齐</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_align(<span class="type">lv_obj_t</span> * obj, 	<span class="comment">//子对象</span></span><br><span class="line">                 <span class="type">lv_align_t</span> align); <span class="comment">//对齐模式 LV_ALIGN_XXXX</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参照父对象对齐，在进行偏移</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_align(<span class="type">lv_obj_t</span> * obj,    <span class="comment">//子对象</span></span><br><span class="line">           <span class="type">lv_align_t</span> align,    <span class="comment">//对齐模式 LV_ALIGN_XXXX</span></span><br><span class="line">           <span class="type">lv_coord_t</span> x_ofs,	<span class="comment">//X轴偏移量</span></span><br><span class="line">           <span class="type">lv_coord_t</span> y_ofs);	<span class="comment">//Y轴偏移量</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-参照其它对象对齐"><a href="#2-参照其它对象对齐" class="headerlink" title="2. 参照其它对象对齐"></a>2. 参照其它对象对齐</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_align_to(<span class="type">lv_obj_t</span> * obj,    <span class="comment">//子对象</span></span><br><span class="line">         <span class="type">const</span> <span class="type">lv_obj_t</span> * base,    <span class="comment">//参照对象</span></span><br><span class="line">              <span class="type">lv_align_t</span> align,    <span class="comment">//对齐模式 LV_ALIGN_XXXX</span></span><br><span class="line">              <span class="type">lv_coord_t</span> x_ofs,    <span class="comment">//X轴偏移量</span></span><br><span class="line">              <span class="type">lv_coord_t</span> y_ofs);   <span class="comment">//Y轴偏移量</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-对齐模式"><a href="#3-对齐模式" class="headerlink" title="3. 对齐模式"></a>3. 对齐模式</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">OUT_TOP_LEFT</th>
+<th align="center">OUT_TOP_MID</th>
+<th align="center">OUT_TOP_RIGHT</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>OUT_LEFT_TOP</strong></td>
+<td align="center"><strong>TOP_LEFT</strong></td>
+<td align="center"><strong>TOP_MID</strong></td>
+<td align="center"><strong>TOP_RIGHT</strong></td>
+<td align="center"><strong>OUT_RIGHT_TOP</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>OUT_LEFT_MID</strong></td>
+<td align="center"><strong>LEFT_MID</strong></td>
+<td align="center"><strong>CENTER</strong></td>
+<td align="center"><strong>RIGHT_MID</strong></td>
+<td align="center"><strong>OUT_RIGHT_MID</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>OUT_LEFT_BOTTOM</strong></td>
+<td align="center"><strong>BOTTOM_LEFT</strong></td>
+<td align="center"><strong>BOTTOM_MID</strong></td>
+<td align="center"><strong>BOTTOM_RIGHT</strong></td>
+<td align="center"><strong>OUT_RIGHT_BOTTOM</strong></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><strong>OUT_BOTTOM_LEFT</strong></td>
+<td align="center"><strong>OUT_BOTTOM_MID</strong></td>
+<td align="center"><strong>OUT_BOTTOM_RIGHT</strong></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="五、设置样式"><a href="#五、设置样式" class="headerlink" title="五、设置样式"></a>五、设置样式</h1><ul>
+<li><strong>样式用于设置部件的外观，以优化显示界面和实现用户交互</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">lv_style_t</span> style;					<span class="comment">//定义样式变量</span></span><br><span class="line">lv_style_init(&amp;style);						<span class="comment">//初始化样式</span></span><br><span class="line">lv_style_set_bg_color(&amp;style,lv_color_hex(<span class="number">0xf4183</span>));<span class="comment">//设置背景颜色</span></span><br><span class="line"></span><br><span class="line"><span class="type">lv_obj_t</span> *obj = lv_boj_create(lv_scr_act());  <span class="comment">//创建一个部件</span></span><br><span class="line">lv_obj_add_style(obj,&amp;style,LV_STATE_DEFAULT);<span class="comment">//设置部件的样式</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>添加本地样式</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">lv_obj_t</span> *obj = lv_boj_create(lv_scr_act());	<span class="comment">//创建一个部件</span></span><br><span class="line">lv_obj_set_style_bg_color(boj,  <span class="comment">//子对象</span></span><br><span class="line">       lv_color_hex(<span class="number">0xf4b183</span>),  <span class="comment">//设置颜色</span></span><br><span class="line">            LV_STATE_DEFAULT);	<span class="comment">//样式何时生效</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="六、设置事件"><a href="#六、设置事件" class="headerlink" title="六、设置事件"></a>六、设置事件</h1><ul>
+<li><strong>在LVGL中，当发生用户感兴趣的事情时，可以触发<u>回调事件</u>，以执行相关操作</strong></li>
+<li><strong>添加事件</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_add_event_cb(<span class="type">lv_obj_t</span> * obj,    <span class="comment">//子对象</span></span><br><span class="line">            <span class="type">lv_event_cb_t</span> event_cb,    <span class="comment">//事件回调函数，自己定义</span></span><br><span class="line">            <span class="type">lv_event_code_t</span> filter,    <span class="comment">//事件类型</span></span><br><span class="line">                  <span class="type">void</span> * user_data);   <span class="comment">//用户数据</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>删除事件</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_remove_event_cb(<span class="type">lv_obj_t</span> * obj,    <span class="comment">//子对象</span></span><br><span class="line">               <span class="type">lv_event_cb_t</span> event_cb);   a<span class="comment">//事件回调函数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>不同的事件类型共用同一个回调函数</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">event_cb</span><span class="params">(<span class="type">lv_event_t</span>* e)</span></span><br><span class="line">&#123;</span><br><span class="line">    lv_event_code code = lv_event_get_code(e);	<span class="comment">//获取事件类型</span></span><br><span class="line">    <span class="keyword">if</span>(code == LV_EVENT_CLICKED)     			<span class="comment">//判断事件类型</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;事件类型，按下后释放\r\n&quot;</span>);		  <span class="comment">//执行相应操作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(code == LV_EVENT_LONG_PRESSED)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;事件类型按下（长按）\r\n&quot;</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>不同的部件共用同一个回调函数</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">event_cb</span><span class="params">(<span class="type">lv_event_t</span>* e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">lv_obj_t</span> *target = lv_event_get_target(e);<span class="comment">//获取触发事件的部件</span></span><br><span class="line">    <span class="keyword">if</span>(target == target_obj)     			  <span class="comment">//判断触发事件的部件</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;父对象触发事件\r\n&quot;</span>);		      <span class="comment">//执行相应操作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(target == child_obj)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;子对象触发事件\r\n&quot;</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ydw-item.github.io.git">洒水水</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ydw-item.github.io.git/2024/09/22/LVGL-1-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1/">https://ydw-item.github.io.git/2024/09/22/LVGL-1-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ydw-item.github.io.git" target="_blank">The personal blog of 洒水水</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LVGL/">LVGL</a></div><div class="post_share"><div class="social-share" data-image="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/25/LVGL-2-%E9%83%A8%E4%BB%B6%E9%83%A8%E5%88%86/" title="LVGL(二)部件部分"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">LVGL(二)部件部分</div></div></a></div><div class="next-post pull-right"><a href="/2024/09/21/I2C/" title="I2C通信协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">I2C通信协议</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/09/25/LVGL-2-%E9%83%A8%E4%BB%B6%E9%83%A8%E5%88%86/" title="LVGL(二)部件部分"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="title">LVGL(二)部件部分</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">洒水水</div><div class="author-info__description">故余虽愚，卒获有所闻</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">VX：ydw_happy  <br> 18551981518</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-text">一、创建对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%AE%BE%E7%BD%AE%E5%A4%A7%E5%B0%8F"><span class="toc-text">二、设置大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%AE%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">三、设置位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="toc-text">四、设置对齐方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%82%E7%85%A7%E7%88%B6%E5%AF%B9%E8%B1%A1%E5%AF%B9%E9%BD%90"><span class="toc-text">1. 参照父对象对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%82%E7%85%A7%E5%85%B6%E5%AE%83%E5%AF%B9%E8%B1%A1%E5%AF%B9%E9%BD%90"><span class="toc-text">2. 参照其它对象对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%B9%E9%BD%90%E6%A8%A1%E5%BC%8F"><span class="toc-text">3. 对齐模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%AE%BE%E7%BD%AE%E6%A0%B7%E5%BC%8F"><span class="toc-text">五、设置样式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%AE%BE%E7%BD%AE%E4%BA%8B%E4%BB%B6"><span class="toc-text">六、设置事件</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/28/GPIO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="GPIO基础知识">GPIO基础知识</a><time datetime="2024-09-27T16:07:09.000Z" title="发表于 2024-09-28 00:07:09">2024-09-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/25/LVGL-2-%E9%83%A8%E4%BB%B6%E9%83%A8%E5%88%86/" title="LVGL(二)部件部分">LVGL(二)部件部分</a><time datetime="2024-09-25T10:13:55.000Z" title="发表于 2024-09-25 18:13:55">2024-09-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/22/LVGL-1-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1/" title="LVGL(一)基础对象">LVGL(一)基础对象</a><time datetime="2024-09-21T16:00:19.000Z" title="发表于 2024-09-22 00:00:19">2024-09-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/21/I2C/" title="I2C通信协议">I2C通信协议</a><time datetime="2024-09-20T16:59:49.000Z" title="发表于 2024-09-21 00:59:49">2024-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/14/hello-world/" title="Hello World">Hello World</a><time datetime="2024-09-14T09:11:25.674Z" title="发表于 2024-09-14 17:11:25">2024-09-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/image/%E8%83%8C%E6%99%AF_6.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By 洒水水</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
