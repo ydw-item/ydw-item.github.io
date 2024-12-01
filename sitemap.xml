@@ -83,13 +83,6 @@
 
   
   <url>
-    <loc>https://ydw-item.github.io.git/tags/LVGL/</loc>
-    <lastmod>2024-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ydw-item.github.io.git/tags/STM32/</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -110,17 +103,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://ydw-item.github.io.git/tags/LVGL/</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/LVGL/</loc>
+    <loc>https://ydw-item.github.io.git/categories/STM32/</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/STM32/</loc>
+    <loc>https://ydw-item.github.io.git/categories/LVGL/</loc>
     <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
