@@ -7,11 +7,11 @@ https://ydw-item.github.io.git/2024/09/22/LVGL-1-%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%
 https://ydw-item.github.io.git/2024/09/21/I2C/
 https://ydw-item.github.io.git/2024/09/14/hello-world/
 https://ydw-item.github.io.git/
+https://ydw-item.github.io.git/tags/LVGL/
 https://ydw-item.github.io.git/tags/STM32/
 https://ydw-item.github.io.git/tags/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/
 https://ydw-item.github.io.git/tags/I2C/
-https://ydw-item.github.io.git/tags/LVGL/
-https://ydw-item.github.io.git/categories/STM32/
 https://ydw-item.github.io.git/categories/LVGL/
+https://ydw-item.github.io.git/categories/STM32/
 https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/
 https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/
