@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RT-Thread-1-ADC | The personal blog of 洒水水</title><meta name="author" content="洒水水"><meta name="copyright" content="洒水水"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、drv_adc.c分析1.调用stm32_adc_init()​	进行板级初始化  2.定义adc_config数组 数组中有几个值通过board.h中的宏定义来确定，同时数组中的最后一个元素后面在某些标准下是被允许加逗号的  如果打开ADC1和ADC2，那么 1adc_config[] &#x3D;&#123;ADC1_CONFIG,ADC3_CONFIG&#125;;  3.ADC1_CONFIG是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RT-Thread-1-ADC">
+<meta property="og:url" content="https://ydw-item.github.io.git/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/index.html">
+<meta property="og:site_name" content="The personal blog of 洒水水">
+<meta property="og:description" content="一、drv_adc.c分析1.调用stm32_adc_init()​	进行板级初始化  2.定义adc_config数组 数组中有几个值通过board.h中的宏定义来确定，同时数组中的最后一个元素后面在某些标准下是被允许加逗号的  如果打开ADC1和ADC2，那么 1adc_config[] &#x3D;&#123;ADC1_CONFIG,ADC3_CONFIG&#125;;  3.ADC1_CONFIG是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ydw-item.github.io.git/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg">
+<meta property="article:published_time" content="2025-02-15T16:20:05.000Z">
+<meta property="article:modified_time" content="2025-02-15T16:20:05.000Z">
+<meta property="article:author" content="洒水水">
+<meta property="article:tag" content="RTOS">
+<meta property="article:tag" content="RT-Thread">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ydw-item.github.io.git/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"><link rel="shortcut icon" href="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"><link rel="canonical" href="https://ydw-item.github.io.git/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RT-Thread-1-ADC',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-16 00:20:05'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="The personal blog of 洒水水" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/image/%E8%83%8C%E6%99%AF_6.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="The personal blog of 洒水水"><img class="site-icon" src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"/><span class="site-name">The personal blog of 洒水水</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RT-Thread-1-ADC</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-15T16:20:05.000Z" title="发表于 2025-02-16 00:20:05">2025-02-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-15T16:20:05.000Z" title="更新于 2025-02-16 00:20:05">2025-02-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RTOS/">RTOS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RTOS/RT-Thread/">RT-Thread</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RT-Thread-1-ADC"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、drv-adc-c分析"><a href="#一、drv-adc-c分析" class="headerlink" title="一、drv_adc.c分析"></a>一、drv_adc.c分析</h1><h2 id="1-调用stm32-adc-init"><a href="#1-调用stm32-adc-init" class="headerlink" title="1.调用stm32_adc_init()"></a>1.调用stm32_adc_init()</h2><p>​	进行板级初始化</p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/1.png" alt="image-20250213213546245"></p>
+<h2 id="2-定义adc-config数组"><a href="#2-定义adc-config数组" class="headerlink" title="2.定义adc_config数组"></a>2.定义adc_config数组</h2><p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/2.png" alt="image-20250213215103492"></p>
+<p>数组中有几个值通过board.h中的宏定义来确定，同时数组中的最后一个元素后面在某些标准下是被允许加逗号的</p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/3.png" alt="image-20250213215514039"></p>
+<p>如果打开ADC1和ADC2，那么</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adc_config[] =&#123;ADC1_CONFIG,ADC3_CONFIG&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-ADC1-CONFIG是什么"><a href="#3-ADC1-CONFIG是什么" class="headerlink" title="3.ADC1_CONFIG是什么"></a>3.ADC1_CONFIG是什么</h2><p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/4.png" alt="image-20250213215847418"></p>
+<h2 id="4-ADC-HandleTypeDef是什么类型"><a href="#4-ADC-HandleTypeDef是什么类型" class="headerlink" title="4.ADC_HandleTypeDef是什么类型"></a>4.ADC_HandleTypeDef是什么类型</h2><p>是 <strong>STM32 HAL（硬件抽象层）库</strong> 中的一个结构体，用于表示 <strong>ADC（模拟到数字转换器）</strong> 外设的配置和状态</p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/5.png" alt="image-20250213221307498"></p>
+<p><strong><code>Instance</code></strong></p>
+<ul>
+<li>类型：<code>ADC_TypeDef *</code></li>
+<li><strong>描述</strong>：指向 ADC 模块寄存器的指针。不同的 STM32 微控制器有多个 ADC 模块（如 <code>ADC1</code>, <code>ADC2</code>, <code>ADC3</code> 等），<code>Instance</code> 用于标识当前操作的是哪个 ADC 模块。</li>
+</ul>
+<p><strong><code>Init</code></strong></p>
+<ul>
+<li><p>类型：<code>ADC_InitTypeDef</code></p>
+</li>
+<li><p>描述</p>
+<p>  ：包含 ADC 初始化配置的结构体。它包含了多个配置选项，如 ADC 时钟、分辨率、数据对齐方式等。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADC_InitTypeDef</span><br></pre></td></tr></table></figure>
+
+<p>   是一个结构体，通常包括以下字段：</p>
+<ul>
+<li><code>ClockPrescaler</code>：ADC 时钟的预分频器。</li>
+<li><code>Resolution</code>：ADC 分辨率（如 12 位、10 位、8 位）。</li>
+<li><code>DataAlign</code>：数据对齐方式（如左对齐或右对齐）。</li>
+<li><code>ScanConvMode</code>：是否启用扫描模式（多个通道转换）。</li>
+<li><code>ContinuousConvMode</code>：是否启用连续转换模式。</li>
+<li><code>ExternalTrigConv</code>：外部触发类型（如软件触发、定时器触发等）。</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>DMA_Handle</code></strong></p>
+<ul>
+<li>类型：<code>DMA_HandleTypeDef *</code></li>
+<li><strong>描述</strong>：指向 DMA（直接存储器访问）句柄的指针。如果使用 DMA 进行 ADC 数据传输，这个字段指向一个 <code>DMA_HandleTypeDef</code> 结构，用于管理 DMA 的配置。</li>
+</ul>
+<p><strong><code>State</code></strong></p>
+<ul>
+<li>类型：<code>__IO uint32_t *</code></li>
+<li><strong>描述</strong>：指向 ADC 状态的指针。这个字段通常用于存储 ADC 的当前状态，如转换进行中、转换完成等状态信息。</li>
+</ul>
+<p><strong><code>ErrorCode</code></strong></p>
+<ul>
+<li>类型：<code>__IO uint32_t</code></li>
+<li><strong>描述</strong>：存储 ADC 操作过程中发生的错误代码。这可以帮助调试和排查问题，比如发生了什么错误，是否由于配置问题导致操作失败等。</li>
+</ul>
+<h2 id="5-启用了几个ADC就定义几个stm32-adc-obj-元素"><a href="#5-启用了几个ADC就定义几个stm32-adc-obj-元素" class="headerlink" title="5.启用了几个ADC就定义几个stm32_adc_obj[]元素"></a>5.启用了几个ADC就定义几个stm32_adc_obj[]元素</h2><p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/8.png" alt="image-20250213223809186"></p>
+<h2 id="6-ADC-Handler和adc-config是一个类型的变量"><a href="#6-ADC-Handler和adc-config是一个类型的变量" class="headerlink" title="6. ADC_Handler和adc_config是一个类型的变量"></a>6. ADC_Handler和adc_config是一个类型的变量</h2><p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/7.png" alt="image-20250213224057191"></p>
+<h2 id="5-for循环"><a href="#5-for循环" class="headerlink" title="5. for循环"></a>5. for循环</h2><p>用sizeof判断使用了几个ADC，使用了几个ADC就循环几此</p>
+<p>1.把adc_config赋值给ADC_Hander(因为第6小点)</p>
+<p>2.通过stm32f407xx.h判断是否有这个外设</p>
+<p>3.Instance中存放的名字是ADCx，是ADC几就把几赋值给name_buf[3]</p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/6.png" alt="image-20250213222200867"></p>
+<h2 id="7-HAL-ADC-Init"><a href="#7-HAL-ADC-Init" class="headerlink" title="7.HAL_ADC_Init()"></a>7.HAL_ADC_Init()</h2><p>1.传入ADC_HandleTypeDef类型的值，初始化ADC</p>
+<p>2.如果返回错误，答应init failed</p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/9.png" alt="99e47c9c-0550-49aa-992d-62ec87fad64a"></p>
+<h2 id="8-rt-hw-adc-register"><a href="#8-rt-hw-adc-register" class="headerlink" title="8.rt_hw_adc_register()"></a>8.rt_hw_adc_register()</h2><p>用于注册硬件 ADC 的函数，它将 ADC 驱动和硬件抽象层（HAL）关联起来,使得 RT-Thread 可以识别和使用指定的 ADC 外设</p>
+<ul>
+<li><strong>初始化硬件 ADC 驱动</strong>：这个函数将硬件 ADC 外设与 RT-Thread 的设备模型进行注册，使得 RT-Thread 可以管理和访问硬件 ADC。</li>
+<li><strong>设备注册</strong>：它会在 RT-Thread 的设备模型中创建一个 ADC 设备对象，从而让系统能够通过统一的接口（例如 <code>read()</code>、<code>write()</code> 等）来操作硬件。</li>
+<li><strong>设备抽象层支持</strong>：通过设备抽象层，用户可以通过设备操作接口（如打开设备、关闭设备、读取数据等）与硬件 ADC 进行交互。</li>
+</ul>
+<h2 id="9-rt-adc-device-是用于表示一个-ADC-设备-的结构体"><a href="#9-rt-adc-device-是用于表示一个-ADC-设备-的结构体" class="headerlink" title="9.rt_adc_device 是用于表示一个 ADC 设备 的结构体"></a>9.<code>rt_adc_device</code> 是用于表示一个 <strong>ADC 设备</strong> 的结构体</h2><p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/10.png" alt="image-20250213230813789"></p>
+<h2 id="10-struct-rt-adc-ops"><a href="#10-struct-rt-adc-ops" class="headerlink" title="10.struct rt_adc_ops"></a>10.struct rt_adc_ops</h2><p> RT-Thread 中与 <strong>ADC（模拟到数字转换器）</strong> 设备交互的操作函数结构体，它包含了一组函数指针</p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/image-20250213231324141.png" alt="image-20250213231324141"></p>
+<p><img src="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/11.png" alt="image-20250213231110666"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ydw-item.github.io.git">洒水水</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ydw-item.github.io.git/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/">https://ydw-item.github.io.git/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ydw-item.github.io.git" target="_blank">The personal blog of 洒水水</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RTOS/">RTOS</a><a class="post-meta__tags" href="/tags/RT-Thread/">RT-Thread</a></div><div class="post_share"><div class="social-share" data-image="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/02/15/RTOS/RT-Thread/RT-Thread-0-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="RT-Thread-0-启动流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RT-Thread-0-启动流程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/02/15/RTOS/RT-Thread/RT-Thread-0-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="RT-Thread-0-启动流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-15</div><div class="title">RT-Thread-0-启动流程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">洒水水</div><div class="author-info__description">故余虽愚，卒获有所闻</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">VX：ydw_happy  <br> 18551981518</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81drv-adc-c%E5%88%86%E6%9E%90"><span class="toc-text">一、drv_adc.c分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%B0%83%E7%94%A8stm32-adc-init"><span class="toc-text">1.调用stm32_adc_init()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9A%E4%B9%89adc-config%E6%95%B0%E7%BB%84"><span class="toc-text">2.定义adc_config数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ADC1-CONFIG%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">3.ADC1_CONFIG是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ADC-HandleTypeDef%E6%98%AF%E4%BB%80%E4%B9%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">4.ADC_HandleTypeDef是什么类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%AF%E7%94%A8%E4%BA%86%E5%87%A0%E4%B8%AAADC%E5%B0%B1%E5%AE%9A%E4%B9%89%E5%87%A0%E4%B8%AAstm32-adc-obj-%E5%85%83%E7%B4%A0"><span class="toc-text">5.启用了几个ADC就定义几个stm32_adc_obj[]元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-ADC-Handler%E5%92%8Cadc-config%E6%98%AF%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">6. ADC_Handler和adc_config是一个类型的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-for%E5%BE%AA%E7%8E%AF"><span class="toc-text">5. for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-HAL-ADC-Init"><span class="toc-text">7.HAL_ADC_Init()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-rt-hw-adc-register"><span class="toc-text">8.rt_hw_adc_register()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-rt-adc-device-%E6%98%AF%E7%94%A8%E4%BA%8E%E8%A1%A8%E7%A4%BA%E4%B8%80%E4%B8%AA-ADC-%E8%AE%BE%E5%A4%87-%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">9.rt_adc_device 是用于表示一个 ADC 设备 的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-struct-rt-adc-ops"><span class="toc-text">10.struct rt_adc_ops</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/" title="RT-Thread-1-ADC">RT-Thread-1-ADC</a><time datetime="2025-02-15T16:20:05.000Z" title="发表于 2025-02-16 00:20:05">2025-02-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/15/RTOS/RT-Thread/RT-Thread-0-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="RT-Thread-0-启动流程">RT-Thread-0-启动流程</a><time datetime="2025-02-15T15:57:05.000Z" title="发表于 2025-02-15 23:57:05">2025-02-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F/" title="蓝桥杯嵌入式模块使用指北">蓝桥杯嵌入式模块使用指北</a><time datetime="2024-12-01T04:34:05.000Z" title="发表于 2024-12-01 12:34:05">2024-12-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" title="蓝桥杯嵌入式模块使用指北">蓝桥杯嵌入式模块使用指北</a><time datetime="2024-12-01T04:34:05.000Z" title="发表于 2024-12-01 12:34:05">2024-12-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/28/GPIO%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="GPIO基础知识">GPIO基础知识</a><time datetime="2024-09-27T16:07:09.000Z" title="发表于 2024-09-28 00:07:09">2024-09-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/image/%E8%83%8C%E6%99%AF_6.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 洒水水</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
