@@ -74,16 +74,7 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/2024/02/15/RT-Thread-0-%E5%90%AF%E5%8A%A8%E6%B5%81/</loc>
-    
-    <lastmod>2024-02-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ydw-item.github.io.git/2024/02/15/RT-Thread-0-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</loc>
+    <loc>https://ydw-item.github.io.git/2025/02/15/RT-Thread-0-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</loc>
     
     <lastmod>2024-02-15</lastmod>
     
@@ -166,13 +157,6 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/LVGL/</loc>
-    <lastmod>2025-02-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2025-02-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -180,14 +164,21 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/RT-Thread/</loc>
+    <loc>https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/</loc>
     <lastmod>2025-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/</loc>
+    <loc>https://ydw-item.github.io.git/categories/LVGL/</loc>
+    <lastmod>2025-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ydw-item.github.io.git/categories/RT-Thread/</loc>
     <lastmod>2025-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
