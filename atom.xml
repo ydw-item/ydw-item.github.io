@@ -33,7 +33,9 @@
     
     
     
-    <category term="RT-Thread" scheme="https://ydw-item.github.io.git/categories/RT-Thread/"/>
+    <category term="RTOS" scheme="https://ydw-item.github.io.git/categories/RTOS/"/>
+    
+    <category term="RT-Thread" scheme="https://ydw-item.github.io.git/categories/RTOS/RT-Thread/"/>
     
     
     <category term="RTOS" scheme="https://ydw-item.github.io.git/tags/RTOS/"/>
