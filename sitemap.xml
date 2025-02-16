@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ydw-item.github.io.git/2025/02/16/RTOS/RT-Thread/RT-Thread-1-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2025-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ydw-item.github.io.git/2025/02/16/RTOS/RT-Thread/2.RT-Thread-ADC/</loc>
     
     <lastmod>2025-02-15</lastmod>
