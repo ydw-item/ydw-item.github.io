@@ -21,8 +21,8 @@ https://ydw-item.github.io.git/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/
 https://ydw-item.github.io.git/categories/STM32/
 https://ydw-item.github.io.git/categories/LVGL/
 https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/
-https://ydw-item.github.io.git/categories/RTOS/
 https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/
-https://ydw-item.github.io.git/categories/RTOS/RT-Thread/
+https://ydw-item.github.io.git/categories/RTOS/
 https://ydw-item.github.io.git/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF/
+https://ydw-item.github.io.git/categories/RTOS/RT-Thread/
 https://ydw-item.github.io.git/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E5%B5%8C%E5%85%A5%E5%BC%8F/
