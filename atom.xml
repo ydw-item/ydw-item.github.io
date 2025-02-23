@@ -6,7 +6,7 @@
   <link href="https://ydw-item.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://ydw-item.github.io.git/"/>
-  <updated>2025-02-19T06:22:05.000Z</updated>
+  <updated>2025-02-22T11:03:49.000Z</updated>
   <id>https://ydw-item.github.io.git/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SPI通信协议&amp;&amp;1.44寸TFT-LCD（ST7735S）</title>
+    <link href="https://ydw-item.github.io.git/2025/02/22/SPI%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&amp;&amp;1.44%E5%AF%B8TFT-LCD%EF%BC%88ST7735S%EF%BC%89/"/>
+    <id>https://ydw-item.github.io.git/2025/02/22/SPI%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&amp;&amp;1.44%E5%AF%B8TFT-LCD%EF%BC%88ST7735S%EF%BC%89/</id>
+    <published>2025-02-22T11:03:49.000Z</published>
+    <updated>2025-02-22T11:03:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、SPI"><a href="#一、SPI" class="headerlink" title="一、SPI"></a>一、SPI</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><p>SPI，英文全称Serial Peripheral Interface，即串行外围设备接口，是一种高速、<a href="https://so.csdn.net/so/search?q=%E5%85%A8%E5%8F%8C%E5%B7%A5&spm=1001.2101.3001.7020">全双工</a>、同步的串行通信总线。</p><h2 id="1-2-信号线"><a href="#1-2-信号线" class="headerlink" title="1.2 信号线"></a>1.2 信号线</h2><ul><li><strong>SCK</strong>（Serial Clock）：串行<strong>时钟线</strong>，由主设备产生，用于同步数据传输。</li><li><strong>MOSI</strong>（Master Output Slave Input）：<strong>主机输出</strong>从机输入线，主设备通过这条线发送数据给从设备。</li><li>MISO（Master Input Slave Output）：<strong>主机输入</strong>从机输出线，主设备通过这条线接收从设备发送的数据。</li><li><strong>SS</strong>（Slave Select）：<strong>从机选择线</strong>（每个从机一根选择线），用于选择与主设备进行通信的从设备。通常情况下，SS线为低电平有效，即当SS线为低电平时，选中对应的从设备进行通信。</li></ul><h2 id="1-3-开始与结束"><a href="#1-3-开始与结束" class="headerlink" title="1.3 开始与结束"></a>1.3 开始与结束</h2><p>当SS从高电平拉低到低电平，这个算是起始的一个时序。而SS从低电平拉高到高电平，就算是结束的时序。</p><p><img src="/2025/02/22/SPI%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&&1.44%E5%AF%B8TFT-LCD%EF%BC%88ST7735S%EF%BC%89/1.png" alt="img"></p><h2 id="1-4-发送和接收字节"><a href="#1-4-发送和接收字节" class="headerlink" title="1.4 发送和接收字节"></a>1.4 发送和接收字节</h2><p>发送接收字节看似是两个时序，但是在SPI中却是<strong>同一个时序</strong>，因为SPI的机制是我们发送一个字节，并且接收一个字节（<strong>哪怕我们并不需要接收数据</strong>）。反过来看也可以是我们接收一个字节，并且发送一个字节（<strong>哪怕这个字节是无用的数据</strong>）。</p><p><img src="/2025/02/22/SPI%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&&1.44%E5%AF%B8TFT-LCD%EF%BC%88ST7735S%EF%BC%89/2.png" alt="img"></p><h2 id="交换bit"><a href="#交换bit" class="headerlink" title="交换bit"></a>交换bit</h2><p><img src="/2025/02/22/SPI%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&&1.44%E5%AF%B8TFT-LCD%EF%BC%88ST7735S%EF%BC%89/3.png" alt="img"></p><p><strong>在SCK上升沿的时候，移出MOSI的数据，在SCK下降沿的时候读取MISO的数据。</strong></p><p><strong>需要在SCK上升沿之前把需要发送的数据位放置在MOSI线上</strong></p><p><strong>SCK下降沿的时候马上读取MISO线上的数据位</strong></p><p><strong>（实际上下降沿和读取应该是同时的，但是我们软件模拟没法同时，但是效果是一样的）</strong></p><h1 id="二、TFT-LCD"><a href="#二、TFT-LCD" class="headerlink" title="二、TFT-LCD"></a>二、TFT-LCD</h1><p><img src="/2025/02/22/SPI%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&&1.44%E5%AF%B8TFT-LCD%EF%BC%88ST7735S%EF%BC%89/4.png" alt="705A80E97488A8ADBF31C36755A03C23"></p><table><thead><tr><th>引脚</th><th>功能</th></tr></thead><tbody><tr><td>GND</td><td>接地</td></tr><tr><td>VCC</td><td>供电（3.3V-5V）</td></tr><tr><td>SCL</td><td>时钟信号</td></tr><tr><td>SDA</td><td>数据信号（MOSI）</td></tr><tr><td>RES</td><td>低电平TFT复位</td></tr><tr><td>DC</td><td>区分接受的是数据还是命令（低电平命令，高电平数据）</td></tr><tr><td>CS</td><td>片选信号，低电平使能</td></tr><tr><td>BLK</td><td>背光（可常接3.3V）</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、SPI&quot;&gt;&lt;a href=&quot;#一、SPI&quot; class=&quot;headerlink&quot; title=&quot;一、SPI&quot;&gt;&lt;/a&gt;一、SPI&lt;/h1&gt;&lt;h2 id=&quot;1-1-简介&quot;&gt;&lt;a href=&quot;#1-1-简介&quot; class=&quot;headerlink&quot; title=&quot;1</summary>
+      
+    
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/categories/STM32/"/>
+    
+    <category term="通信协议" scheme="https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    <category term="外设" scheme="https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E5%A4%96%E8%AE%BE/"/>
+    
+    
+    <category term="通讯协议" scheme="https://ydw-item.github.io.git/tags/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
+    
+    <category term="SPI" scheme="https://ydw-item.github.io.git/tags/SPI/"/>
+    
+  </entry>
   
   <entry>
     <title>RT-Thread-PIN</title>
@@ -183,6 +213,34 @@
     <category term="RTOS" scheme="https://ydw-item.github.io.git/tags/RTOS/"/>
     
     <category term="RT-Thread" scheme="https://ydw-item.github.io.git/tags/RT-Thread/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>USART通信</title>
+    <link href="https://ydw-item.github.io.git/2024/12/23/USART/"/>
+    <id>https://ydw-item.github.io.git/2024/12/23/USART/</id>
+    <published>2024-12-22T16:18:30.000Z</published>
+    <updated>2024-12-22T16:18:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、&quot;&gt;&lt;a href=&quot;#一、&quot; class=&quot;headerlink&quot; title=&quot;一、&quot;&gt;&lt;/a&gt;一、&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/categories/STM32/"/>
+    
+    <category term="通信协议" scheme="https://ydw-item.github.io.git/categories/STM32/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+    <category term="通讯协议" scheme="https://ydw-item.github.io.git/tags/%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
+    
+    <category term="USART" scheme="https://ydw-item.github.io.git/tags/USART/"/>
     
   </entry>
   
