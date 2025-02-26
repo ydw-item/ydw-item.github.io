@@ -33,7 +33,9 @@
     
     
     
-    <category term="外设" scheme="https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/"/>
+    <category term="STM32" scheme="https://ydw-item.github.io.git/categories/STM32/"/>
+    
+    <category term="外设" scheme="https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/"/>
     
     
     <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
@@ -277,6 +279,10 @@
     
     <category term="外设" scheme="https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/"/>
     
+    <category term="STM32" scheme="https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/STM32/"/>
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
     
     <category term="外设" scheme="https://ydw-item.github.io.git/tags/%E5%A4%96%E8%AE%BE/"/>
     
