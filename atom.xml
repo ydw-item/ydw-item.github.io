@@ -6,7 +6,7 @@
   <link href="https://ydw-item.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://ydw-item.github.io.git/"/>
-  <updated>2025-04-06T08:24:19.000Z</updated>
+  <updated>2025-04-22T09:06:30.000Z</updated>
   <id>https://ydw-item.github.io.git/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Boorloader</title>
+    <link href="https://ydw-item.github.io.git/2025/04/22/BootLoader/"/>
+    <id>https://ydw-item.github.io.git/2025/04/22/BootLoader/</id>
+    <published>2025-04-22T09:06:30.000Z</published>
+    <updated>2025-04-22T09:06:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>参考资料</strong>：</p><p><a href="https://www.bilibili.com/video/BV1SatHeBEVG?spm_id_from=333.788.videopod.episodes&vd_source=daf1db3c953df56f74e76077dfa61ab4&p=2">超子说物联网：手把手教程 4G通信物联网 OTA远程升级 BootLoader程序设计</a></p><h1 id="一、Bootloader的作用"><a href="#一、Bootloader的作用" class="headerlink" title="一、Bootloader的作用"></a>一、Bootloader的作用</h1><h2 id="1-1-Boot的目的："><a href="#1-1-Boot的目的：" class="headerlink" title="1.1 Boot的目的："></a>1.1 Boot的目的：</h2><p>最终目的：跳到C语言中；为了C语言运行程序会进行一系列的初始化，系统一上电后如何通过一系列的设置让软件程序员进入C语言&#x2F;更高级语言环境的开发，这个过程就是boot的主要目的。</p><h2 id="1-2-Loader的目的："><a href="#1-2-Loader的目的：" class="headerlink" title="1.2 Loader的目的："></a>1.2 Loader的目的：</h2><p>主要目的是开始执行应用逻辑，比如点灯：需要灯的接口开发；串口输入输出：需要串口编程；加载linux的内核：flash的编程、网卡的编程、内核启动前的初始化部分。根据不同的应用会有不同的变化。</p><h1 id="二"><a href="#二" class="headerlink" title="二"></a>二</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1SatHeBEVG?spm_id_from=333.788.videopod.episodes&amp;vd_source=daf1db</summary>
+      
+    
+    
+    
+    <category term="外设" scheme="https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/"/>
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LVGL物理按键代替触摸</title>
+    <link href="https://ydw-item.github.io.git/2025/04/08/LVGL/LVGL-%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BB%A3%E6%9B%BF%E8%A7%A6%E6%91%B8/"/>
+    <id>https://ydw-item.github.io.git/2025/04/08/LVGL/LVGL-%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BB%A3%E6%9B%BF%E8%A7%A6%E6%91%B8/</id>
+    <published>2025-04-08T04:16:01.000Z</published>
+    <updated>2025-04-08T04:16:01.000Z</updated>
+    
+    
+    
+    
+    <category term="LVGL" scheme="https://ydw-item.github.io.git/categories/LVGL/"/>
+    
+    
+    <category term="LVGL" scheme="https://ydw-item.github.io.git/tags/LVGL/"/>
+    
+  </entry>
   
   <entry>
     <title>LVGL页面图层</title>
@@ -86,19 +128,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://ydw-item.github.io.git/2025/03/15/BootLoader/"/>
-    <id>https://ydw-item.github.io.git/2025/03/15/BootLoader/</id>
-    <published>2025-03-15T02:51:01.845Z</published>
-    <updated>2025-03-15T02:51:01.845Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>OV-Watch-12-LCD</title>
     <link href="https://ydw-item.github.io.git/2025/03/12/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/12.OV-Watch_LCD/"/>
     <id>https://ydw-item.github.io.git/2025/03/12/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/12.OV-Watch_LCD/</id>
@@ -133,35 +162,7 @@
     <published>2025-03-11T08:28:30.000Z</published>
     <updated>2025-03-11T08:28:30.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/m0_60313295/article/details/144648171?ops_request_misc=&request_id=&biz_id=102&utm_term=CST816&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-144648171.142%5Ev101%5Epc_search_result_base5&spm=1018.2226.3001.4187">【模块系列】STM32&amp;1.69TFT屏幕_cst816t-CSDN博客</a></p><p><img src="/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/11.OV-Watch_CST816/1.png" alt="image-20250302143612984"></p><p><img src="/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/11.OV-Watch_CST816/1.png" alt="image-20250302143612984"><img src="/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/11.OV-Watch_CST816/2.png" alt="image-20250324165257146"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一、硬件选型和原理图&quot;&gt;&lt;a href=&quot;#一、硬件选型和原理图&quot; class=&quot;headerlink&quot; title=&quot;一、硬件选型和原理图&quot;&gt;&lt;/a&gt;一、硬件选型和原理图&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/m0_6031</summary>
-      
-    
-    
-    
-    <category term="个人项目" scheme="https://ydw-item.github.io.git/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="OV-Watch" scheme="https://ydw-item.github.io.git/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/"/>
-    
-    
-    <category term="个人项目" scheme="https://ydw-item.github.io.git/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="OV-Watch" scheme="https://ydw-item.github.io.git/tags/OV-Watch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://ydw-item.github.io.git/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/test/"/>
-    <id>https://ydw-item.github.io.git/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/test/</id>
-    <published>2025-03-11T08:28:30.000Z</published>
-    <updated>2025-03-11T08:28:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/m0_60313295/article/details/144648171?ops_request_misc=&request_id=&biz_id=102&utm_term=CST816&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-144648171.142%5Ev101%5Epc_search_result_base5&spm=1018.2226.3001.4187">【模块系列】STM32&amp;1.69TFT屏幕_cst816t-CSDN博客</a></p><p><img src="/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/test/1.png" alt="image-20250302143612984"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/m0_60313295/article/details/144648171?ops_request_misc=&request_id=&biz_id=102&utm_term=CST816&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-144648171.142%5Ev101%5Epc_search_result_base5&spm=1018.2226.3001.4187">【模块系列】STM32&amp;1.69TFT屏幕_cst816t-CSDN博客</a></p><p><img src="/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/11.OV-Watch_CST816/1.png" alt="image-20250302143612984"></p><p><img src="/2025/03/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/11.OV-Watch_CST816/1.png" alt="image-20250302143612984"></p>]]></content>
     
     
       
@@ -217,7 +218,7 @@
     <published>2025-03-09T08:28:30.000Z</published>
     <updated>2025-03-09T08:28:30.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/weixin_45829708/article/details/124892787">【电源芯片】TPS63020升降压芯片-电池放电-CSDN博客</a></p><p><img src="/2025/03/09/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/9.OV-Watch_POWER/1.png" alt="image-20250302141655183"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/weixin_45829708/article/details/124892787">【电源芯片】TPS63020升降压芯片-电池放电-CSDN博客</a></p><p><img src="/2025/03/09/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/9.OV-Watch_POWER/1.png" alt="//"></p><table><thead><tr><th align="center">NAME</th><th align="center">功能</th></tr></thead><tbody><tr><td align="center">EN</td><td align="center">启用输入(1启用0输出)</td></tr><tr><td align="center">POWER_EN</td><td align="center">PA3</td></tr><tr><td align="center"></td><td align="center"></td></tr></tbody></table><h1 id="二、TP4056"><a href="#二、TP4056" class="headerlink" title="二、TP4056"></a>二、TP4056</h1><p><img src="/2025/03/09/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/9.OV-Watch_POWER/image-20250415202041915.png" alt="image-20250415202041915"></p><h2 id="2-1-引脚定义"><a href="#2-1-引脚定义" class="headerlink" title="2.1 引脚定义"></a>2.1 引脚定义</h2><table><thead><tr><th align="center">NAME</th><th align="center">功能</th></tr></thead><tbody><tr><td align="center">TEMP</td><td align="center">电池温度检测输入</td></tr><tr><td align="center">PROG</td><td align="center">可编程恒流充电电流设置端</td></tr><tr><td align="center">GND</td><td align="center">地端</td></tr><tr><td align="center">VCC</td><td align="center">电源端</td></tr><tr><td align="center">BAT</td><td align="center">电池端</td></tr><tr><td align="center">STDBY</td><td align="center">电池充电完成指示端</td></tr><tr><td align="center">CHARG</td><td align="center">电池充电指示端</td></tr><tr><td align="center">CE</td><td align="center">芯片使能输入端</td></tr></tbody></table>]]></content>
     
     
       
