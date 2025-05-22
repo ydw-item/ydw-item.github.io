@@ -132,26 +132,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://ydw-item.github.io.git/2025/05/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E6%99%BA%E8%83%BD%E9%97%A8%E9%94%81/%E6%99%BA%E8%83%BD%E9%97%A8%E9%94%81/"/>
-    <id>https://ydw-item.github.io.git/2025/05/11/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E6%99%BA%E8%83%BD%E9%97%A8%E9%94%81/%E6%99%BA%E8%83%BD%E9%97%A8%E9%94%81/</id>
-    <published>2025-05-11T03:02:51.458Z</published>
-    <updated>2025-05-11T03:03:33.445Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、器件"><a href="#一、器件" class="headerlink" title="一、器件"></a>一、器件</h1><h1 id="二、功能"><a href="#二、功能" class="headerlink" title="二、功能"></a>二、功能</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一、器件&quot;&gt;&lt;a href=&quot;#一、器件&quot; class=&quot;headerlink&quot; title=&quot;一、器件&quot;&gt;&lt;/a&gt;一、器件&lt;/h1&gt;&lt;h1 id=&quot;二、功能&quot;&gt;&lt;a href=&quot;#二、功能&quot; class=&quot;headerlink&quot; title=&quot;二、功能&quot;&gt;&lt;/a</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>uniapp</title>
     <link href="https://ydw-item.github.io.git/2025/04/30/uniapp/"/>
     <id>https://ydw-item.github.io.git/2025/04/30/uniapp/</id>
@@ -531,6 +511,34 @@
       
       
     <summary type="html">&lt;h1 id=&quot;一、硬件选型和原理图&quot;&gt;&lt;a href=&quot;#一、硬件选型和原理图&quot; class=&quot;headerlink&quot; title=&quot;一、硬件选型和原理图&quot;&gt;&lt;/a&gt;一、硬件选型和原理图&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/Gracefu</summary>
+      
+    
+    
+    
+    <category term="个人项目" scheme="https://ydw-item.github.io.git/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="OV-Watch" scheme="https://ydw-item.github.io.git/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/"/>
+    
+    
+    <category term="个人项目" scheme="https://ydw-item.github.io.git/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="OV-Watch" scheme="https://ydw-item.github.io.git/tags/OV-Watch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OV-Watch-4-BL24C02</title>
+    <link href="https://ydw-item.github.io.git/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/"/>
+    <id>https://ydw-item.github.io.git/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/</id>
+    <published>2025-03-03T08:28:30.000Z</published>
+    <updated>2025-03-03T08:28:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/kiss_youi/article/details/115468415">BL24Cxx系列EEPROM测试总结-CSDN博客</a></p><p><a href="https://blog.csdn.net/2401_85236922/article/details/141247699">BL24C02P芯片的使用说明&#x2F;i2c数据存储芯片-CSDN博客</a></p><p><img src="/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/1.png" alt="image-20250302124825002"></p><p><img src="/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/2.png" alt="image-20250302124752744"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、硬件选型和原理图&quot;&gt;&lt;a href=&quot;#一、硬件选型和原理图&quot; class=&quot;headerlink&quot; title=&quot;一、硬件选型和原理图&quot;&gt;&lt;/a&gt;一、硬件选型和原理图&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/kiss_yo</summary>
       
     
     
