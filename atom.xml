@@ -42,6 +42,67 @@
   </entry>
   
   <entry>
+    <title>MQTT通信实验</title>
+    <link href="https://ydw-item.github.io.git/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/"/>
+    <id>https://ydw-item.github.io.git/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/</id>
+    <published>2025-05-13T05:13:30.000Z</published>
+    <updated>2025-05-13T05:13:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://mqtt.p2hp.com/">1.首页 | MQTT中文网</a></p><p>2.MQTT-3.1.1标准协议文档.pdf</p><h1 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h1><h2 id="1-1-EMQX"><a href="#1-1-EMQX" class="headerlink" title="1.1 EMQX"></a>1.1 EMQX</h2><h3 id="1-1-1-启动emqx服务器"><a href="#1-1-1-启动emqx服务器" class="headerlink" title="1.1.1 启动emqx服务器"></a>1.1.1 启动emqx服务器</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514154503630.png" alt="image-20250514154503630"></p><h3 id="1-1-2-进入EMQX网址"><a href="#1-1-2-进入EMQX网址" class="headerlink" title="1.1.2 进入EMQX网址"></a>1.1.2 进入EMQX网址</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1:18083/</span></span><br></pre></td></tr></table></figure><ul><li>默认用户名：<code>admin</code></li><li>默认密码    ：<code>public</code></li></ul><p>已修改为</p><ul><li>账号：<code>admin</code></li><li>密码：<code>DWen_666</code></li></ul><h3 id="1-1-2-用户端认证"><a href="#1-1-2-用户端认证" class="headerlink" title="1.1.2 用户端认证"></a>1.1.2 用户端认证</h3><p>- </p><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/QQ_1747209189624.png" alt="QQ_1747209189624"></p><p>- </p><pre><code>![QQ_1747209297266](MQTT通信实验/QQ_1747209297266.png)</code></pre><p>- </p><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514155638677.png" alt="image-20250514155638677"></p><h3 id="1-1-3-创建两个用户"><a href="#1-1-3-创建两个用户" class="headerlink" title="1.1.3 创建两个用户"></a>1.1.3 创建两个用户</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户1</span></span><br><span class="line">ClientID:USER001</span><br><span class="line">用户名:USER001</span><br><span class="line">密码:USER001</span><br><span class="line">Topic:USER001</span><br><span class="line"></span><br><span class="line"><span class="comment">//用户2</span></span><br><span class="line">ClientID:USER002</span><br><span class="line">用户名:USER002</span><br><span class="line">密码:USER002</span><br><span class="line">Topic:USER002</span><br></pre></td></tr></table></figure><p>​</p><h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><h1 id="二、-MQTT协议报文总览"><a href="#二、-MQTT协议报文总览" class="headerlink" title="二、 MQTT协议报文总览"></a>二、 MQTT协议报文总览</h1><p>MQTT-3.1.1标准协议</p><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514181937256.png" alt="image-20250514181937256"></p><h2 id="2-1-剩余长度"><a href="#2-1-剩余长度" class="headerlink" title="2.1 剩余长度"></a>2.1 剩余长度</h2><ul><li><p>剩余长度 &#x3D; 可变报头的长度 + 有效荷载的长度</p></li><li><p>剩余长度字段为 1-4个字节</p><p>  <img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185312204.png" alt="image-20250514185312204"></p></li></ul><h3 id="3-1-1-100举例"><a href="#3-1-1-100举例" class="headerlink" title="3.1.1 100举例"></a>3.1.1 100举例</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185616226.png" alt="image-20250514185616226"></p><h3 id="3-1-2-2000举例"><a href="#3-1-2-2000举例" class="headerlink" title="3.1.2 2000举例"></a>3.1.2 2000举例</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185701630.png" alt="image-20250514185701630"></p><h3 id="3-1-3-50000举例"><a href="#3-1-3-50000举例" class="headerlink" title="3.1.3 50000举例"></a>3.1.3 50000举例</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185746492.png" alt="image-20250514185746492"></p><h1 id="三、编写报文"><a href="#三、编写报文" class="headerlink" title="三、编写报文"></a>三、编写报文</h1><h2 id="3-1-CONNECT-连接服务端"><a href="#3-1-CONNECT-连接服务端" class="headerlink" title="3.1 CONNECT-连接服务端"></a>3.1 CONNECT-连接服务端</h2><h2 id="3-2-CONNACK-确认连接请求"><a href="#3-2-CONNACK-确认连接请求" class="headerlink" title="3.2 CONNACK-确认连接请求"></a>3.2 CONNACK-确认连接请求</h2><h2 id="3-12-PINGREQ-心跳请求"><a href="#3-12-PINGREQ-心跳请求" class="headerlink" title="3.12 PINGREQ-心跳请求"></a>3.12 PINGREQ-心跳请求</h2><h2 id="3-13-PINGRESP-心跳响应"><a href="#3-13-PINGRESP-心跳响应" class="headerlink" title="3.13 PINGRESP-心跳响应"></a>3.13 PINGRESP-心跳响应</h2><h2 id="3-14-断开连接"><a href="#3-14-断开连接" class="headerlink" title="3.14 断开连接"></a>3.14 断开连接</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://mqtt.p2hp.com/&quot;&gt;1.首页 | MQTT中文网&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.M</summary>
+      
+    
+    
+    
+    <category term="物联网" scheme="https://ydw-item.github.io.git/categories/%E7%89%A9%E8%81%94%E7%BD%91/"/>
+    
+    <category term="MQTT" scheme="https://ydw-item.github.io.git/categories/%E7%89%A9%E8%81%94%E7%BD%91/MQTT/"/>
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
+    
+    <category term="通信协议" scheme="https://ydw-item.github.io.git/tags/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MCU_OneNet_APP的MQTT通信</title>
+    <link href="https://ydw-item.github.io.git/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/"/>
+    <id>https://ydw-item.github.io.git/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/</id>
+    <published>2025-05-13T05:13:30.000Z</published>
+    <updated>2025-05-13T05:13:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.ESP-01S 产品规格书.pdf</p><p>2.ESP8266系列入门教程.pdf</p><p>3.ESP8266系列模组用户手册v1.5.pdf</p><p>4.ESP8266 Non-OS SDK AT 指令集_V3.0.1.pdf</p><p>5.<a href="https://blog.csdn.net/2402_84707567/article/details/146552136?ops_request_misc=&request_id=&biz_id=102&utm_term=esp01%E7%83%A7%E5%BD%95at%E5%9B%BA%E4%BB%B6mqtt&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-146552136.142%5Ev102%5Epc_search_result_base5&spm=1018.2226.3001.4187">ESP8266-01固件烧录（以MQTT透传AT固件为例）_esp8266烧录mqtt-CSDN博客</a></p><p>6.<a href="https://open.iot.10086.cn/doc/v5/fuse/detail/new_platform">OneNET - 中国移动物联网开放平台文档</a></p><p>7.<a href="https://espressif-docs.readthedocs-hosted.com/projects/esp-at/zh-cn/release-v2.2.0.0_esp8266/AT_Command_Set/MQTT_AT_Commands.html">MQTT AT Commands — ESP-AT 用户指南 文档</a></p><h1 id="一、ESP8266—01介绍"><a href="#一、ESP8266—01介绍" class="headerlink" title="一、ESP8266—01介绍"></a>一、ESP8266—01介绍</h1><h2 id="1-1-引脚图"><a href="#1-1-引脚图" class="headerlink" title="1.1 引脚图"></a>1.1 引脚图</h2><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/image-20250514200710441.png" alt="image-20250514200710441"></p><h3 id="1-1-1-烧录模式"><a href="#1-1-1-烧录模式" class="headerlink" title="1.1.1 烧录模式"></a>1.1.1 烧录模式</h3><table><thead><tr><th align="center">引脚</th><th align="center">电平</th></tr></thead><tbody><tr><td align="center">RST</td><td align="center">高</td></tr><tr><td align="center">EN</td><td align="center">高</td></tr><tr><td align="center">GPIO0</td><td align="center">GND</td></tr></tbody></table><h3 id="1-1-2-运行模式"><a href="#1-1-2-运行模式" class="headerlink" title="1.1.2 运行模式"></a>1.1.2 运行模式</h3><table><thead><tr><th align="center">引脚</th><th align="center">电平</th></tr></thead><tbody><tr><td align="center">RST</td><td align="center">高</td></tr><tr><td align="center">EN</td><td align="center">高</td></tr><tr><td align="center">GPIO0</td><td align="center">悬空</td></tr></tbody></table><p>串口发送AT\r\n 返回OK，即为正常</p><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/QQ_1747548700265.png" alt="QQ_1747548700265"></p><h1 id="二、OneNET平台搭建"><a href="#二、OneNET平台搭建" class="headerlink" title="二、OneNET平台搭建"></a>二、OneNET平台搭建</h1><h1 id="三、MQTTX连接测试"><a href="#三、MQTTX连接测试" class="headerlink" title="三、MQTTX连接测试"></a>三、MQTTX连接测试</h1><h2 id="3-1-MQTTX连接"><a href="#3-1-MQTTX连接" class="headerlink" title="3.1 MQTTX连接"></a>3.1 MQTTX连接</h2><h3 id="3-1-1-OneNET-token计算工具"><a href="#3-1-1-OneNET-token计算工具" class="headerlink" title="3.1.1 OneNET-token计算工具"></a>3.1.1 OneNET-token计算工具</h3><p><a href="https://tool.lu/timestamp/">时间戳(Unix timestamp)转换工具 - 在线工具</a></p><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/image-20250518123212839.png" alt="image-20250518123212839"></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">res：products/&#123;产品id&#125;/devices/&#123;设备名字&#125;</span><br><span class="line">et：时间戳工具生成</span><br><span class="line">key：设备密钥</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* 示例 */</span></span><br><span class="line">res：products/<span class="number">06l</span>wQZVUlf/devices/STM32_DoorLock </span><br><span class="line">et：<span class="number">1810613661</span></span><br><span class="line">key：RWtVYzNibGlQblpoNlE4V25PdGV4OFdtMkxGSmVWcTE=</span><br></pre></td></tr></table></figure><h3 id="3-1-2-连接OneNET"><a href="#3-1-2-连接OneNET" class="headerlink" title="3.1.2 连接OneNET"></a>3.1.2 连接OneNET</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/QQ_1747541919631.png" alt="QQ_1747541919631"></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">服务器域名：mqtts.heclouds.com</span><br><span class="line">服务器端口：<span class="number">1883</span></span><br><span class="line">ClientID：设备ID</span><br><span class="line">Username：产品ID</span><br><span class="line">Password：token加密的设备密钥</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 示例 */</span></span><br><span class="line">服务器域名：mqtts.heclouds.com</span><br><span class="line">服务器端口：<span class="number">1883</span></span><br><span class="line">ClientID：STM32_DoorLock</span><br><span class="line">Username：<span class="number">06l</span>wQZVUlf</span><br><span class="line">Password：version=version=<span class="number">2018</span><span class="number">-10</span><span class="number">-31</span>&amp;res=products%<span class="number">2F</span>06lwQZVUlf%<span class="number">2F</span>devices%<span class="number">2F</span>STM32_DoorLock&amp;et=<span class="number">1810613661</span>&amp;method=md5&amp;sign=ZC1dWD4iirJ6B04pLhvNzQ%<span class="number">3</span>D%<span class="number">3</span>D</span><br></pre></td></tr></table></figure><h3 id="3-1-3-订阅主题"><a href="#3-1-3-订阅主题" class="headerlink" title="3.1.3 订阅主题"></a>3.1.3 订阅主题</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">订阅全部物模型相关主题：$sys/&#123;pid&#125;/&#123;device-name&#125;/thing/#</span><br><span class="line">订阅物模型属性类相关主题：$sys/&#123;pid&#125;/&#123;device-name&#125;/thing/property/#</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* 示例 */</span></span><br><span class="line">订阅主题：$sys/<span class="number">06l</span>wQZVUlf/STM32_DoorLock/thing/#</span><br></pre></td></tr></table></figure><h3 id="3-1-4-OneNET模拟数据下发"><a href="#3-1-4-OneNET模拟数据下发" class="headerlink" title="3.1.4 OneNET模拟数据下发"></a>3.1.4 OneNET模拟数据下发</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/QQ_1747543992750.png" alt="QQ_1747543992750"></p><h3 id="3-1-5-发布消息"><a href="#3-1-5-发布消息" class="headerlink" title="3.1.5 发布消息"></a>3.1.5 发布消息</h3><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/QQ_1747544964361.png" alt="QQ_1747544964361"></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">发布主题：$sys/&#123;pid&#125;/&#123;device-name&#125;/thing/property/post</span><br><span class="line">主题消息：</span><br><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;id&quot;</span>: <span class="string">&quot;123&quot;</span>,</span><br><span class="line"><span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0&quot;</span>,</span><br><span class="line"><span class="string">&quot;params&quot;</span>: &#123;</span><br><span class="line"><span class="string">&quot;lock&quot;</span>: &#123;</span><br><span class="line"><span class="string">&quot;value&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;password&quot;</span>: &#123;</span><br><span class="line"><span class="string">&quot;value&quot;</span>: <span class="number">123456</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* 示例 */</span></span><br><span class="line">发布主题：$sys/<span class="number">06l</span>wQZVUlf/STM32_DoorLock/thing/property/post</span><br><span class="line">主题消息：</span><br><span class="line">&#123;<span class="string">&quot;id&quot;</span>:<span class="string">&quot;123&quot;</span>,<span class="string">&quot;version&quot;</span>:<span class="string">&quot;1.0&quot;</span>,<span class="string">&quot;params&quot;</span>:&#123;<span class="string">&quot;lock&quot;</span>:&#123;<span class="string">&quot;value&quot;</span>:<span class="literal">true</span>&#125;,<span class="string">&quot;password&quot;</span>:&#123;<span class="string">&quot;value&quot;</span>: <span class="number">123456</span>&#125;&#125;&#125;</span><br></pre></td></tr></table></figure><h1 id="四、-串口助手连接测试"><a href="#四、-串口助手连接测试" class="headerlink" title="四、 串口助手连接测试"></a>四、 串口助手连接测试</h1><h2 id="4-0-常用AT指令"><a href="#4-0-常用AT指令" class="headerlink" title="4.0 常用AT指令"></a>4.0 常用AT指令</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">固件测试：AT</span><br><span class="line">查询版本信息：AT+GMR</span><br><span class="line">联网测试：AT+PING=<span class="string">&quot;www.baidu.com&quot;</span></span><br></pre></td></tr></table></figure><h2 id="4-1-MQTT固件"><a href="#4-1-MQTT固件" class="headerlink" title="4.1 MQTT固件"></a>4.1 MQTT固件</h2><h3 id="4-1-1-连接OneNET"><a href="#4-1-1-连接OneNET" class="headerlink" title="4.1.1 连接OneNET"></a>4.1.1 连接OneNET</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">复位：AT+RST</span><br><span class="line">开启DHCP：AT+CWDHCP=<span class="number">1</span>,<span class="number">1</span></span><br><span class="line">设置为station模式：AT+CWMODE=<span class="number">1</span></span><br><span class="line">连接WIFI：AT+CWJAP=<span class="string">&quot;WIFI&quot;</span>,<span class="string">&quot;密码&quot;</span><span class="comment">//2.4GHZ</span></span><br><span class="line">配置用户信息：AT+MQTTUSERCFG=&lt;LinkID&gt;,&lt;scheme&gt;,&lt;<span class="string">&quot;client_id设备ID&quot;</span>&gt;,&lt;<span class="string">&quot;username产品ID&quot;</span>&gt;,&lt;<span class="string">&quot;password&quot;</span>&gt;,&lt;cert_key_ID&gt;,&lt;CA_ID&gt;,&lt;<span class="string">&quot;path&quot;</span>&gt;</span><br><span class="line">连接MQTT：AT+MQTTCONN=<span class="number">0</span>,<span class="string">&quot;IP&quot;</span>,端口,<span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/* 举例 */</span></span><br><span class="line">复位：AT+RST</span><br><span class="line">开启DHCP：AT+CWDHCP=<span class="number">1</span>,<span class="number">1</span></span><br><span class="line">设置为station模式：AT+CWMODE=<span class="number">1</span></span><br><span class="line">连接WIFI：AT+CWJAP=<span class="string">&quot;KCT&quot;</span>,<span class="string">&quot;12345678&quot;</span></span><br><span class="line">配置用户信息：AT+MQTTUSERCFG=<span class="number">0</span>,<span class="number">1</span>,<span class="string">&quot;STM32_DoorLock&quot;</span>,<span class="string">&quot;06lwQZVUlf&quot;</span>,<span class="string">&quot;version=2018-10-31&amp;res=products%2F06lwQZVUlf%2Fdevices%2FSTM32_DoorLock&amp;et=1810613661&amp;method=md5&amp;sign=ZC1dWD4iirJ6B04pLhvNzQ%3D%3D&quot;</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="string">&quot;&quot;</span></span><br><span class="line">连接MQTT：连接MQTT：AT+MQTTCONN=<span class="number">0</span>,<span class="string">&quot;mqtts.heclouds.com&quot;</span>,<span class="number">1883</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure><h3 id="4-1-2-订阅消息"><a href="#4-1-2-订阅消息" class="headerlink" title="4.1.2 订阅消息"></a>4.1.2 订阅消息</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">订阅主题：AT+MQTTSUB=&lt;LinkID&gt;,&lt;<span class="string">&quot;topic&quot;</span>&gt;,&lt;qos&gt;</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* 举例 */</span></span><br><span class="line">订阅主题：AT+MQTTSUB=<span class="number">0</span>,<span class="string">&quot;$sys/06lwQZVUlf/STM32_DoorLock/thing/#&quot;</span>,<span class="number">1</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/QQ_1747554703700.png" alt="QQ_1747554703700"></p><h3 id="4-1-3-发布消息"><a href="#4-1-3-发布消息" class="headerlink" title="4.1.3 发布消息"></a>4.1.3 发布消息</h3><h3 id><a href="#" class="headerlink" title></a></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 格式 */</span></span><br><span class="line">发送字符串消息：AT+MQTTPUB=&lt;LinkID&gt;,&lt;<span class="string">&quot;topic&quot;</span>&gt;,&lt;<span class="string">&quot;data&quot;</span>&gt;,&lt;qos&gt;,&lt;retain&gt;</span><br><span class="line">发布消息(二进制)：AT+MQTTPUBRAW=&lt;LinkID&gt;,&lt;<span class="string">&quot;topic&quot;</span>&gt;,&lt;length&gt;,&lt;qos&gt;,&lt;retain&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 举例 */</span></span><br><span class="line">发送字符串消息：</span><br><span class="line"><span class="comment">/* 发送密码 */</span></span><br><span class="line">AT+MQTTPUB=<span class="number">0</span>,<span class="string">&quot;$sys/06lwQZVUlf/STM32_DoorLock/thing/property/post&quot;</span>,<span class="string">&quot;&#123;\&quot;id\&quot;:\&quot;123\&quot;\,\&quot;params\&quot;:&#123;\&quot;password\&quot;:&#123;\&quot;value\&quot;:456789&#125;&#125;&#125;&quot;</span>,<span class="number">1</span>,<span class="number">0</span></span><br><span class="line"><span class="comment">/* 发送开关 */</span></span><br><span class="line">AT+MQTTPUB=<span class="number">0</span>,<span class="string">&quot;$sys/06lwQZVUlf/STM32_DoorLock/thing/property/post&quot;</span>,<span class="string">&quot;&#123;\&quot;id\&quot;:\&quot;123\&quot;\,\&quot;params\&quot;:&#123;\&quot;lock\&quot;:&#123;\&quot;value\&quot;:false&#125;&#125;&#125;&quot;</span>,<span class="number">1</span>,<span class="number">0</span></span><br><span class="line"><span class="comment">/* 发送密码和开关 */</span> </span><br><span class="line">AT+MQTTPUB=<span class="number">0</span>,<span class="string">&quot;$sys/06lwQZVUlf/STM32_DoorLock/thing/property/post&quot;</span>,<span class="string">&quot;&#123;\&quot;id\&quot;:\&quot;123\&quot;\,\&quot;params\&quot;:&#123;\&quot;password\&quot;:&#123;\&quot;value\&quot;:456789&#125;\,\&quot;lock\&quot;:&#123;\&quot;value\&quot;:false&#125;&#125;&#125;&quot;</span>,<span class="number">1</span>,<span class="number">0</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure><p><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MCU_OneNet_APP%E7%9A%84MQTT%E9%80%9A%E4%BF%A1/image-20250518164145819.png" alt="image-20250518164145819"></p><h2 id="4-2-AT固件"><a href="#4-2-AT固件" class="headerlink" title="4.2 AT固件"></a>4.2 AT固件</h2><h1 id="五、MCU连接测试"><a href="#五、MCU连接测试" class="headerlink" title="五、MCU连接测试"></a>五、MCU连接测试</h1><h2 id="5-1-MQTT固件"><a href="#5-1-MQTT固件" class="headerlink" title="5.1 MQTT固件"></a>5.1 MQTT固件</h2><h2 id="5-3-AT固件"><a href="#5-3-AT固件" class="headerlink" title="5. 3 AT固件"></a>5. 3 AT固件</h2><h1 id="六、微信小程序连接测试"><a href="#六、微信小程序连接测试" class="headerlink" title="六、微信小程序连接测试"></a>六、微信小程序连接测试</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h1&gt;&lt;p&gt;1.ESP-01S 产品规格书.pdf&lt;/p&gt;
+&lt;p&gt;2.ESP8266系列入门教程.pdf&lt;/p&gt;
+&lt;p&gt;3.ESP826</summary>
+      
+    
+    
+    
+    <category term="物联网" scheme="https://ydw-item.github.io.git/categories/%E7%89%A9%E8%81%94%E7%BD%91/"/>
+    
+    <category term="AT" scheme="https://ydw-item.github.io.git/categories/%E7%89%A9%E8%81%94%E7%BD%91/AT/"/>
+    
+    <category term="ESP8266" scheme="https://ydw-item.github.io.git/categories/%E7%89%A9%E8%81%94%E7%BD%91/AT/ESP8266/"/>
+    
+    
+    <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
+    
+    <category term="通信协议" scheme="https://ydw-item.github.io.git/tags/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SPI通信协议</title>
     <link href="https://ydw-item.github.io.git/2025/05/11/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/SPI/"/>
     <id>https://ydw-item.github.io.git/2025/05/11/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/SPI/</id>
@@ -91,27 +152,27 @@
   </entry>
   
   <entry>
-    <title>TF卡</title>
-    <link href="https://ydw-item.github.io.git/2025/04/30/TF%E5%8D%A1/"/>
-    <id>https://ydw-item.github.io.git/2025/04/30/TF%E5%8D%A1/</id>
+    <title>uniapp</title>
+    <link href="https://ydw-item.github.io.git/2025/04/30/uniapp/"/>
+    <id>https://ydw-item.github.io.git/2025/04/30/uniapp/</id>
     <published>2025-04-30T15:58:30.000Z</published>
     <updated>2025-04-30T15:58:30.000Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>参考资料</strong>：</p><p><a href="https://www.bilibili.com/video/BV1XW4y1W7Dp/?spm_id_from=333.337.search-card.all.click&vd_source=daf1db3c953df56f74e76077dfa61ab4">1.【单片机】STM32驱动SD卡详解，SD卡硬件接口协议讲解_哔哩哔哩_bilibili</a></p><h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><p><img src="/2025/04/30/TF%E5%8D%A1/image-20250501123038696.png" alt="image-20250501123038696"></p><p>其中DATA3可以作为SD卡检测线CD，即在SD卡插入时产生一个信号让主机知道SD卡插入了</p><h1 id="二"><a href="#二" class="headerlink" title="二"></a>二</h1><p><img src="/2025/04/30/TF%E5%8D%A1/image-20250501120939389.png" alt="image-20250501120939389"></p>]]></content>
+    <content type="html"><![CDATA[<p><strong>参考资料</strong>：</p><p>1.<a href="https://uniapp.dcloud.net.cn/quickstart.html"><a href="https://uniapp.dcloud.net.cn/tutorial/project.html">工程简介 | uni-app官网</a></a></p><h1 id="一、工程目录"><a href="#一、工程目录" class="headerlink" title="一、工程目录"></a>一、工程目录</h1><h2 id="1-1-uni-scss"><a href="#1-1-uni-scss" class="headerlink" title="1.1 uni.scss"></a>1.1 uni.scss</h2><h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><h1 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h1>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1XW4y1W7Dp/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d</summary>
+&lt;p&gt;1.&lt;a href=&quot;https://uniapp.dcloud.net.cn/quickstart.html&quot;&gt;&lt;a href=&quot;https://uniapp.dcloud.net.cn/tutorial/pro</summary>
       
     
     
     
-    <category term="外设" scheme="https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/"/>
+    <category term="物联网" scheme="https://ydw-item.github.io.git/categories/%E7%89%A9%E8%81%94%E7%BD%91/"/>
     
     
-    <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
+    <category term="APP开发" scheme="https://ydw-item.github.io.git/tags/APP%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -165,23 +226,6 @@
     
     
     <category term="STM32" scheme="https://ydw-item.github.io.git/tags/STM32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LVGL物理按键代替触摸</title>
-    <link href="https://ydw-item.github.io.git/2025/04/08/LVGL/LVGL-%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BB%A3%E6%9B%BF%E8%A7%A6%E6%91%B8/"/>
-    <id>https://ydw-item.github.io.git/2025/04/08/LVGL/LVGL-%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BB%A3%E6%9B%BF%E8%A7%A6%E6%91%B8/</id>
-    <published>2025-04-08T04:16:01.000Z</published>
-    <updated>2025-04-08T04:16:01.000Z</updated>
-    
-    
-    
-    
-    <category term="LVGL" scheme="https://ydw-item.github.io.git/categories/LVGL/"/>
-    
-    
-    <category term="LVGL" scheme="https://ydw-item.github.io.git/tags/LVGL/"/>
     
   </entry>
   
@@ -487,34 +531,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;一、硬件选型和原理图&quot;&gt;&lt;a href=&quot;#一、硬件选型和原理图&quot; class=&quot;headerlink&quot; title=&quot;一、硬件选型和原理图&quot;&gt;&lt;/a&gt;一、硬件选型和原理图&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/Gracefu</summary>
-      
-    
-    
-    
-    <category term="个人项目" scheme="https://ydw-item.github.io.git/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="OV-Watch" scheme="https://ydw-item.github.io.git/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/"/>
-    
-    
-    <category term="个人项目" scheme="https://ydw-item.github.io.git/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="OV-Watch" scheme="https://ydw-item.github.io.git/tags/OV-Watch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OV-Watch-4-BL24C02</title>
-    <link href="https://ydw-item.github.io.git/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/"/>
-    <id>https://ydw-item.github.io.git/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/</id>
-    <published>2025-03-03T08:28:30.000Z</published>
-    <updated>2025-03-03T08:28:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、硬件选型和原理图"><a href="#一、硬件选型和原理图" class="headerlink" title="一、硬件选型和原理图"></a>一、硬件选型和原理图</h1><p><a href="https://blog.csdn.net/kiss_youi/article/details/115468415">BL24Cxx系列EEPROM测试总结-CSDN博客</a></p><p><a href="https://blog.csdn.net/2401_85236922/article/details/141247699">BL24C02P芯片的使用说明&#x2F;i2c数据存储芯片-CSDN博客</a></p><p><img src="/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/1.png" alt="image-20250302124825002"></p><p><img src="/2025/03/03/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/OV-Watch/4.OV-Watch_BL24C02/2.png" alt="image-20250302124752744"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一、硬件选型和原理图&quot;&gt;&lt;a href=&quot;#一、硬件选型和原理图&quot; class=&quot;headerlink&quot; title=&quot;一、硬件选型和原理图&quot;&gt;&lt;/a&gt;一、硬件选型和原理图&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/kiss_yo</summary>
       
     
     
