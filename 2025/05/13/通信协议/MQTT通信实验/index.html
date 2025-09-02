@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MQTT通信实验 | The personal blog of DWen_666</title><meta name="author" content="DWen_666"><meta name="copyright" content="DWen_666"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考资料1.首页 | MQTT中文网 2.MQTT-3.1.1标准协议文档.pdf 一、环境搭建1.1 EMQX1.1.1 启动emqx服务器 1.1.2 进入EMQX网址1http:&#x2F;&#x2F;127.0.0.1:18083&#x2F;   默认用户名：admin 默认密码    ：public  已修改为  账号：admin 密码：DWen_666  1.1.2 用户端认证-   -  ![QQ_1747209">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MQTT通信实验 | The personal blog of DWen_666</title><meta name="author" content="DWen_666"><meta name="copyright" content="DWen_666"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考资料1.首页 | MQTT中文网 2.MQTT-3.1.1标准协议文档.pdf 一、环境搭建1.1 EMQX1.1.1 启动emqx服务器.evvawooyqjhm{}  1.1.2 进入EMQX网址1http:&#x2F;&#x2F;127.0.0.1:18083&#x2F;   默认用户名：admin 默认密码    ：public  已修改为  账号：admin 密码：DWen_666  1.1.2 用户端认证-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MQTT通信实验">
 <meta property="og:url" content="https://ydw-item.github.io.git/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/index.html">
 <meta property="og:site_name" content="The personal blog of DWen_666">
-<meta property="og:description" content="参考资料1.首页 | MQTT中文网 2.MQTT-3.1.1标准协议文档.pdf 一、环境搭建1.1 EMQX1.1.1 启动emqx服务器 1.1.2 进入EMQX网址1http:&#x2F;&#x2F;127.0.0.1:18083&#x2F;   默认用户名：admin 默认密码    ：public  已修改为  账号：admin 密码：DWen_666  1.1.2 用户端认证-   -  ![QQ_1747209">
+<meta property="og:description" content="参考资料1.首页 | MQTT中文网 2.MQTT-3.1.1标准协议文档.pdf 一、环境搭建1.1 EMQX1.1.1 启动emqx服务器.evvawooyqjhm{}  1.1.2 进入EMQX网址1http:&#x2F;&#x2F;127.0.0.1:18083&#x2F;   默认用户名：admin 默认密码    ：public  已修改为  账号：admin 密码：DWen_666  1.1.2 用户端认证-">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ydw-item.github.io.git/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg">
 <meta property="article:published_time" content="2025-05-13T05:13:30.000Z">
@@ -156,7 +156,8 @@
     })(window)</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="The personal blog of DWen_666" type="application/atom+xml">
 </head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/image/%E8%83%8C%E6%99%AF_6.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="The personal blog of DWen_666"><img class="site-icon" src="/image/%E6%B4%92%E6%B0%B4%E6%B0%B4.jpg"/><span class="site-name">The personal blog of DWen_666</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MQTT通信实验</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-13T05:13:30.000Z" title="发表于 2025-05-13 13:13:30">2025-05-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-13T05:13:30.000Z" title="更新于 2025-05-13 13:13:30">2025-05-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MQTT通信实验"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://mqtt.p2hp.com/">1.首页 | MQTT中文网</a></p>
 <p>2.MQTT-3.1.1标准协议文档.pdf</p>
-<h1 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h1><h2 id="1-1-EMQX"><a href="#1-1-EMQX" class="headerlink" title="1.1 EMQX"></a>1.1 EMQX</h2><h3 id="1-1-1-启动emqx服务器"><a href="#1-1-1-启动emqx服务器" class="headerlink" title="1.1.1 启动emqx服务器"></a>1.1.1 启动emqx服务器</h3><p><img src="/1.png" alt="image-20250514154503630"></p>
+<h1 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h1><h2 id="1-1-EMQX"><a href="#1-1-EMQX" class="headerlink" title="1.1 EMQX"></a>1.1 EMQX</h2><h3 id="1-1-1-启动emqx服务器"><a href="#1-1-1-启动emqx服务器" class="headerlink" title="1.1.1 启动emqx服务器"></a>1.1.1 启动emqx服务器</h3><style>.evvawooyqjhm{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/1.png" class="evvawooyqjhm" alt="image-20250514154503630">
+
 <h3 id="1-1-2-进入EMQX网址"><a href="#1-1-2-进入EMQX网址" class="headerlink" title="1.1.2 进入EMQX网址"></a>1.1.2 进入EMQX网址</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1:18083/</span></span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -169,37 +170,51 @@
 <li>密码：<code>DWen_666</code></li>
 </ul>
 <h3 id="1-1-2-用户端认证"><a href="#1-1-2-用户端认证" class="headerlink" title="1.1.2 用户端认证"></a>1.1.2 用户端认证</h3><p>- </p>
-<p><img src="/2.png" alt="QQ_1747209189624"></p>
+<style>.jvpxociqjklp{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/2.png" class="jvpxociqjklp" alt="QQ_1747209189624">
+
 <p>- </p>
-<pre><code>![QQ_1747209297266](QQ_1747209297266.png)
+<pre><code>&lt;style&gt;.wtnvlxuserxj&#123;&#125;&lt;/style&gt;&#123;% asset_img wtnvlxuserxj QQ_1747209297266.png '"""QQ_1747209297266"' %&#125;
 </code></pre>
 <p>- </p>
-<p><img src="/image-20250514155638677.png" alt="image-20250514155638677"></p>
+<style>.qjzskzjhnccw{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514155638677.png" class="qjzskzjhnccw" alt="image-20250514155638677">
+
 <h3 id="1-1-3-创建两个用户"><a href="#1-1-3-创建两个用户" class="headerlink" title="1.1.3 创建两个用户"></a>1.1.3 创建两个用户</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户1</span></span><br><span class="line">ClientID:USER001</span><br><span class="line">用户名:USER001</span><br><span class="line">密码:USER001</span><br><span class="line">Topic:USER001</span><br><span class="line"></span><br><span class="line"><span class="comment">//用户2</span></span><br><span class="line">ClientID:USER002</span><br><span class="line">用户名:USER002</span><br><span class="line">密码:USER002</span><br><span class="line">Topic:USER002</span><br></pre></td></tr></table></figure>
 
 
 
 <p>​	</p>
 <h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><h1 id="二、-MQTT协议报文总览"><a href="#二、-MQTT协议报文总览" class="headerlink" title="二、 MQTT协议报文总览"></a>二、 MQTT协议报文总览</h1><p>MQTT-3.1.1标准协议</p>
-<p><img src="/image-20250514181937256.png" alt="image-20250514181937256"></p>
+<style>.bcvotlqoncxh{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514181937256.png" class="bcvotlqoncxh" alt="image-20250514181937256">
+
+
+
 <h2 id="2-1-剩余长度"><a href="#2-1-剩余长度" class="headerlink" title="2.1 剩余长度"></a>2.1 剩余长度</h2><ul>
 <li><p>剩余长度 &#x3D; 可变报头的长度 + 有效荷载的长度</p>
 </li>
 <li><p>剩余长度字段为 1-4个字节</p>
-<p>  <img src="/image-20250514185312204.png" alt="image-20250514185312204"></p>
-</li>
+  <style>.hwohtdivewzi{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185312204.png" class="hwohtdivewzi" alt="image-20250514185312204"></li>
 </ul>
-<h3 id="3-1-1-100举例"><a href="#3-1-1-100举例" class="headerlink" title="3.1.1 100举例"></a>3.1.1 100举例</h3><p><img src="/image-20250514185616226.png" alt="image-20250514185616226"></p>
-<h3 id="3-1-2-2000举例"><a href="#3-1-2-2000举例" class="headerlink" title="3.1.2 2000举例"></a>3.1.2 2000举例</h3><p><img src="/image-20250514185701630.png" alt="image-20250514185701630"></p>
-<h3 id="3-1-3-50000举例"><a href="#3-1-3-50000举例" class="headerlink" title="3.1.3 50000举例"></a>3.1.3 50000举例</h3><p><img src="/image-20250514185746492.png" alt="image-20250514185746492"></p>
+<h3 id="3-1-1-100举例"><a href="#3-1-1-100举例" class="headerlink" title="3.1.1 100举例"></a>3.1.1 100举例</h3><style>.lbpgerlmyqfb{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185616226.png" class="lbpgerlmyqfb" alt="image-20250514185616226">
+
+<h3 id="3-1-2-2000举例"><a href="#3-1-2-2000举例" class="headerlink" title="3.1.2 2000举例"></a>3.1.2 2000举例</h3><style>.wtjwucefdhju{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185701630.png" class="wtjwucefdhju" alt="image-20250514185701630">
+
+<h3 id="3-1-3-50000举例"><a href="#3-1-3-50000举例" class="headerlink" title="3.1.3 50000举例"></a>3.1.3 50000举例</h3><style>.jbmowmljmyer{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250514185746492.png" class="jbmowmljmyer" alt="image-20250514185746492">
+
+
+
+
+
 <h1 id="三、编写报文"><a href="#三、编写报文" class="headerlink" title="三、编写报文"></a>三、编写报文</h1><h2 id="3-1-CONNECT-连接服务端"><a href="#3-1-CONNECT-连接服务端" class="headerlink" title="3.1 CONNECT-连接服务端"></a>3.1 CONNECT-连接服务端</h2><h2 id="3-2-CONNACK-确认连接请求"><a href="#3-2-CONNACK-确认连接请求" class="headerlink" title="3.2 CONNACK-确认连接请求"></a>3.2 CONNACK-确认连接请求</h2><h2 id="3-8-SUBSCRIBE-订阅主题"><a href="#3-8-SUBSCRIBE-订阅主题" class="headerlink" title="3.8 SUBSCRIBE-订阅主题"></a>3.8 SUBSCRIBE-订阅主题</h2><h2 id="3-9-SUBACK-订阅确定"><a href="#3-9-SUBACK-订阅确定" class="headerlink" title="3.9 SUBACK-订阅确定"></a>3.9 SUBACK-订阅确定</h2><h2 id="3-10-UNSUBSCRIBE-取消订阅"><a href="#3-10-UNSUBSCRIBE-取消订阅" class="headerlink" title="3.10 UNSUBSCRIBE-取消订阅"></a>3.10 UNSUBSCRIBE-取消订阅</h2><h2 id="3-11-SUBACK-取消订阅确定"><a href="#3-11-SUBACK-取消订阅确定" class="headerlink" title="3.11 SUBACK-取消订阅确定"></a>3.11 SUBACK-取消订阅确定</h2><h2 id="3-12-PINGREQ-心跳请求"><a href="#3-12-PINGREQ-心跳请求" class="headerlink" title="3.12 PINGREQ-心跳请求"></a>3.12 PINGREQ-心跳请求</h2><p>连接保活</p>
-<p><img src="/image-20250725130312204.png" alt="image-20250725130312204"></p>
+<style>.rrtdkcytiren{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250725130312204.png" class="rrtdkcytiren" alt="image-20250725130312204">
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C0 00</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-13-PINGRESP-心跳响应"><a href="#3-13-PINGRESP-心跳响应" class="headerlink" title="3.13 PINGRESP-心跳响应"></a>3.13 PINGRESP-心跳响应</h2><p><img src="/image-20250725130442950.png" alt="image-20250725130442950"></p>
+<h2 id="3-13-PINGRESP-心跳响应"><a href="#3-13-PINGRESP-心跳响应" class="headerlink" title="3.13 PINGRESP-心跳响应"></a>3.13 PINGRESP-心跳响应</h2><style>.csfipvkmiose{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250725130442950.png" class="csfipvkmiose" alt="image-20250725130442950">
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D0 00</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-14-断开连接-P46"><a href="#3-14-断开连接-P46" class="headerlink" title="3.14 断开连接(P46)"></a>3.14 断开连接(P46)</h2><p><img src="/image-20250725130026095.png" alt="image-20250725130026095"></p>
+<h2 id="3-14-断开连接-P46"><a href="#3-14-断开连接-P46" class="headerlink" title="3.14 断开连接(P46)"></a>3.14 断开连接(P46)</h2><style>.ydemmjkszfec{}</style><img src="/2025/05/13/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/MQTT%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/image-20250725130026095.png" class="ydemmjkszfec" alt="image-20250725130026095">
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E0 00</span><br></pre></td></tr></table></figure>
 
 
