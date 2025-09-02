@@ -507,13 +507,6 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/tags/WDG/</loc>
-    <lastmod>2025-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://ydw-item.github.io.git/tags/APP%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -521,7 +514,7 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/tags/PCB/</loc>
+    <loc>https://ydw-item.github.io.git/tags/WDG/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -529,6 +522,13 @@
   
   <url>
     <loc>https://ydw-item.github.io.git/tags/%E4%BD%8E%E5%8A%9F%E8%80%97/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ydw-item.github.io.git/tags/PCB/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -556,14 +556,14 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/tags/SPI/</loc>
+    <loc>https://ydw-item.github.io.git/tags/USART/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/tags/USART/</loc>
+    <loc>https://ydw-item.github.io.git/tags/SPI/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -621,14 +621,14 @@
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/STM32/</loc>
+    <loc>https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/STM32/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ydw-item.github.io.git/categories/%E5%A4%96%E8%AE%BE/STM32/</loc>
+    <loc>https://ydw-item.github.io.git/categories/STM32/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -643,13 +643,6 @@
   
   <url>
     <loc>https://ydw-item.github.io.git/categories/PCB/</loc>
-    <lastmod>2025-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -678,6 +671,13 @@
   
   <url>
     <loc>https://ydw-item.github.io.git/categories/STM32/WDG/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ydw-item.github.io.git/categories/STM32/%E5%A4%96%E8%AE%BE/</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

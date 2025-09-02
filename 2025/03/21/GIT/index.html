@@ -165,24 +165,24 @@
 <p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=github&spm=1001.2101.3001.7020">github</a>的contributions统计就是按邮箱来统计的。</p>
 <h2 id="2-查看个人信息"><a href="#2-查看个人信息" class="headerlink" title="2. 查看个人信息"></a>2. 查看个人信息</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-生成公钥和私钥"><a href="#3-生成公钥和私钥" class="headerlink" title="3. 生成公钥和私钥"></a>3. 生成公钥和私钥</h2><p><img src="/GIT/1.png" alt="QQ_1742805478515"></p>
-<h1 id="二、Sourcetree本地仓库设置"><a href="#二、Sourcetree本地仓库设置" class="headerlink" title="二、Sourcetree本地仓库设置"></a>二、Sourcetree本地仓库设置</h1><p><img src="/GIT/2.png" alt="QQ_1742896224882"></p>
+<h2 id="3-生成公钥和私钥"><a href="#3-生成公钥和私钥" class="headerlink" title="3. 生成公钥和私钥"></a>3. 生成公钥和私钥</h2><p><img src="/1.png" alt="QQ_1742805478515"></p>
+<h1 id="二、Sourcetree本地仓库设置"><a href="#二、Sourcetree本地仓库设置" class="headerlink" title="二、Sourcetree本地仓库设置"></a>二、Sourcetree本地仓库设置</h1><p><img src="/2.png" alt="QQ_1742896224882"></p>
 <h2 id="2-1-初始化仓库-第一次需要"><a href="#2-1-初始化仓库-第一次需要" class="headerlink" title="2.1 初始化仓库(第一次需要)"></a>2.1 初始化仓库(第一次需要)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init 					#把当前目录变成git可以管理的仓库</span><br></pre></td></tr></table></figure>
 
-<p><img src="/GIT/4.png" alt="image-20250325183008060"></p>
+<p><img src="/4.png" alt="image-20250325183008060"></p>
 <h2 id="2-2-添加文件到暂存区-每次都要"><a href="#2-2-添加文件到暂存区-每次都要" class="headerlink" title="2.2 添加文件到暂存区(每次都要)"></a>2.2 添加文件到暂存区(每次都要)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt 			#添加一个文件，也可以添加文件夹</span><br><span class="line">git add . 					#添加全部文件</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-3-提交到本地仓库-每次都要"><a href="#2-3-提交到本地仓库-每次都要" class="headerlink" title="2.3 提交到本地仓库(每次都要)"></a>2.3 提交到本地仓库(每次都要)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交说明&quot;</span>    	#提交修改</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-4-创建远程仓库-第一次需要"><a href="#2-4-创建远程仓库-第一次需要" class="headerlink" title="2.4 创建远程仓库(第一次需要)"></a>2.4 创建远程仓库(第一次需要)</h2><p><img src="/GIT/3.png" alt="QQ_1742896961943"></p>
+<h2 id="2-4-创建远程仓库-第一次需要"><a href="#2-4-创建远程仓库-第一次需要" class="headerlink" title="2.4 创建远程仓库(第一次需要)"></a>2.4 创建远程仓库(第一次需要)</h2><p><img src="/3.png" alt="QQ_1742896961943"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@gitee.com:yaodaowen/sss.git</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-5-绑定远程仓库-第一次需要"><a href="#2-5-绑定远程仓库-第一次需要" class="headerlink" title="2.5 绑定远程仓库(第一次需要)"></a>2.5 绑定远程仓库(第一次需要)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@gitee.com:yaodaowen/sss.git(地址)</span><br><span class="line">#远程仓库的提交（第一次链接）</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-6-推送代码到远程仓库-每次都要"><a href="#2-6-推送代码到远程仓库-每次都要" class="headerlink" title="2.6 推送代码到远程仓库(每次都要)"></a>2.6 推送代码到远程仓库(每次都要)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="string">&quot;master&quot;</span>		#第一次</span><br><span class="line">git push						#第一次之后</span><br></pre></td></tr></table></figure>
 
-<p><img src="/GIT/6.png" alt="image-20250325185422461"></p>
-<h2 id="2-7-推送失败解决方案"><a href="#2-7-推送失败解决方案" class="headerlink" title="2.7 推送失败解决方案"></a>2.7 推送失败解决方案</h2><p><img src="/GIT/5.png" alt="image-20250325184408593"></p>
+<p><img src="/6.png" alt="image-20250325185422461"></p>
+<h2 id="2-7-推送失败解决方案"><a href="#2-7-推送失败解决方案" class="headerlink" title="2.7 推送失败解决方案"></a>2.7 推送失败解决方案</h2><p><img src="/5.png" alt="image-20250325184408593"></p>
 <p>远程仓库的 <code>master</code> 分支上有一些你本地没有的更新，需要先拉取远程仓库的更新</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
 

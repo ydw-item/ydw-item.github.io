@@ -164,27 +164,27 @@
 <li><strong>MISO</strong>（Master Input Slave Output）：<strong>主机输入</strong>从机输出线，主设备通过这条线接收从设备发送的数据。</li>
 <li><strong>CS</strong>（Slave Select）(NSS或SS)：<strong>从机选择线</strong>（每个从机一根选择线），用于选择与主设备进行通信的从设备。通常情况下，SS线为<strong>低电平有效</strong>，即当<strong>SS</strong>线为<strong>低电平</strong>时，<strong>选中对应的从设备进行通信</strong>。</li>
 </ul>
-<p><img src="/SPI/5.png" alt="image-20250511102329794"></p>
+<p><img src="/5.png" alt="image-20250511102329794"></p>
 <h1 id="三、-开始与结束"><a href="#三、-开始与结束" class="headerlink" title="三、 开始与结束"></a>三、 开始与结束</h1><p>当SS从高电平拉低到<strong>低电平</strong>，这个算是<strong>起始</strong>的一个时序。而SS从低电平拉高到<strong>高电平</strong>，就算是结束的时序。</p>
-<p><img src="/SPI/1.png" alt="img"></p>
+<p><img src="/1.png" alt="img"></p>
 <h2 id="1-4-发送和接收字节"><a href="#1-4-发送和接收字节" class="headerlink" title="1.4 发送和接收字节"></a>1.4 发送和接收字节</h2><p>发送接收字节看似是两个时序，但是在SPI中却是<strong>同一个时序</strong>，因为SPI的机制是&#x3D;&#x3D;我们发送一个字节，并且接收一个字节&#x3D;&#x3D;（<strong>哪怕我们并不需要接收数据</strong>）。反过来看也可以是我们接收一个字节，并且发送一个字节（<strong>哪怕这个字节是无用的数据</strong>）。</p>
-<p><img src="/SPI/6.png" alt="image-20250511102607470"></p>
+<p><img src="/6.png" alt="image-20250511102607470"></p>
 <ul>
 <li>来一个时钟<strong>上升沿</strong>信号，主机和从机分别把自己<strong>高位</strong>的值左移出来(<strong>一般高位先行</strong>)</li>
 <li>来一个时钟<strong>下降沿</strong>信号，主机和从机分别<strong>读入</strong>数据，存储到移位寄存器的低位</li>
 </ul>
-<p><img src="/SPI/2.png" alt="img"></p>
-<h2 id="交换bit"><a href="#交换bit" class="headerlink" title="交换bit"></a>交换bit</h2><p><img src="/SPI/3.png" alt="img"></p>
+<p><img src="/2.png" alt="img"></p>
+<h2 id="交换bit"><a href="#交换bit" class="headerlink" title="交换bit"></a>交换bit</h2><p><img src="/3.png" alt="img"></p>
 <p><strong>在SCK上升沿的时候，移出MOSI的数据，在SCK下降沿的时候读取MISO的数据。</strong></p>
 <p><strong>需要在SCK上升沿之前把需要发送的数据位放置在MOSI线上</strong></p>
 <p><strong>SCK下降沿的时候马上读取MISO线上的数据位</strong></p>
 <p><strong>（实际上下降沿和读取应该是同时的，但是我们软件模拟没法同时，但是效果是一样的）</strong></p>
-<h2 id="1-6-不同模式下的通信"><a href="#1-6-不同模式下的通信" class="headerlink" title="1.6 不同模式下的通信"></a>1.6 不同模式下的通信</h2><p><img src="/SPI/9.png" alt="image-20250305141745720"></p>
-<p><img src="/SPI/10.png" alt="image-20250305141814533"></p>
-<p><img src="/SPI/8.png" alt="image-20250305141718015"></p>
-<p><img src="/SPI/7.png" alt="image-20250305141639698"></p>
-<p><img src="/SPI/11.png" alt="image-20250305141859718"></p>
-<p><img src="/SPI/12.png" alt="image-20250305142011451"></p>
+<h2 id="1-6-不同模式下的通信"><a href="#1-6-不同模式下的通信" class="headerlink" title="1.6 不同模式下的通信"></a>1.6 不同模式下的通信</h2><p><img src="/9.png" alt="image-20250305141745720"></p>
+<p><img src="/10.png" alt="image-20250305141814533"></p>
+<p><img src="/8.png" alt="image-20250305141718015"></p>
+<p><img src="/7.png" alt="image-20250305141639698"></p>
+<p><img src="/11.png" alt="image-20250305141859718"></p>
+<p><img src="/12.png" alt="image-20250305142011451"></p>
 <p><img src="/12.OV-Watch_LCD/13.png" alt="image-20250305142031698"></p>
 <h1 id="二"><a href="#二" class="headerlink" title="二"></a>二</h1><h2 id="时钟的极性和相位"><a href="#时钟的极性和相位" class="headerlink" title="时钟的极性和相位"></a>时钟的极性和相位</h2><h3 id="1-时钟的极性-CPOL"><a href="#1-时钟的极性-CPOL" class="headerlink" title="1.时钟的极性(CPOL)"></a>1.时钟的极性(CPOL)</h3><p>什么时候读数据(数据采集)和设置的<strong>时钟和相位</strong>有关</p>
 <p>通信的整个过程分为空闲时刻和通信时刻</p>
@@ -192,25 +192,25 @@
 <ul>
 <li>空闲状态SCLK是低电平，CPOL&#x3D;0</li>
 </ul>
-<p><img src="/SPI/image-20250511103646951.png" alt="image-20250511103646951"></p>
+<p><img src="/image-20250511103646951.png" alt="image-20250511103646951"></p>
 <ul>
 <li>空闲状态SCLK是高电平，CPOL&#x3D;1</li>
 </ul>
-<p><img src="/SPI/image-20250511103726353.png" alt="image-20250511103726353"></p>
+<p><img src="/image-20250511103726353.png" alt="image-20250511103726353"></p>
 <h3 id="2-时钟的相位-CPHA"><a href="#2-时钟的相位-CPHA" class="headerlink" title="2.时钟的相位(CPHA)"></a>2.时钟的相位(CPHA)</h3><p>直接决定SPI总线从那个跳变沿开始采样数据</p>
 <ul>
 <li>CPHA&#x3D;0：表示从第一个跳变沿开始采样</li>
 </ul>
-<p><img src="/SPI/image-20250511104059236.png" alt="image-20250511104059236"></p>
+<p><img src="/image-20250511104059236.png" alt="image-20250511104059236"></p>
 <ul>
 <li>CPHA&#x3D;1：表示从第二个跳变沿开始采样</li>
 </ul>
-<p><img src="/SPI/image-20250511104044786.png" alt="image-20250511104044786"></p>
+<p><img src="/image-20250511104044786.png" alt="image-20250511104044786"></p>
 <h3 id="3-SPI的4种模式"><a href="#3-SPI的4种模式" class="headerlink" title="3.SPI的4种模式"></a>3.SPI的4种模式</h3><p>时钟的两种极性和2种相位的不同组合，得到了SPI的4种工作模式</p>
-<p><img src="/SPI/image-20250511104312629.png" alt="image-20250511104312629"></p>
-<h4 id="3-1-模式0和模式2"><a href="#3-1-模式0和模式2" class="headerlink" title="3.1 模式0和模式2"></a>3.1 模式0和模式2</h4><p><img src="/SPI/image-20250511104947143.png" alt="image-20250511104947143"></p>
-<h4 id="3-2-模式1和模式3"><a href="#3-2-模式1和模式3" class="headerlink" title="3.2 模式1和模式3"></a>3.2 模式1和模式3</h4><p><img src="/SPI/image-20250511104902672.png" alt="image-20250511104902672"></p>
-<h1 id="三、硬件SPI"><a href="#三、硬件SPI" class="headerlink" title="三、硬件SPI"></a>三、硬件SPI</h1><p><img src="/SPI/image-20250512125536962.png" alt="image-20250512125536962"></p>
+<p><img src="/image-20250511104312629.png" alt="image-20250511104312629"></p>
+<h4 id="3-1-模式0和模式2"><a href="#3-1-模式0和模式2" class="headerlink" title="3.1 模式0和模式2"></a>3.1 模式0和模式2</h4><p><img src="/image-20250511104947143.png" alt="image-20250511104947143"></p>
+<h4 id="3-2-模式1和模式3"><a href="#3-2-模式1和模式3" class="headerlink" title="3.2 模式1和模式3"></a>3.2 模式1和模式3</h4><p><img src="/image-20250511104902672.png" alt="image-20250511104902672"></p>
+<h1 id="三、硬件SPI"><a href="#三、硬件SPI" class="headerlink" title="三、硬件SPI"></a>三、硬件SPI</h1><p><img src="/image-20250512125536962.png" alt="image-20250512125536962"></p>
 <h2 id="3-1-初始化"><a href="#3-1-初始化" class="headerlink" title="3.1 初始化"></a>3.1 初始化</h2><h3 id="3-1-1-SPI-HandleTypeDef"><a href="#3-1-1-SPI-HandleTypeDef" class="headerlink" title="3.1.1 SPI_HandleTypeDef"></a>3.1.1 SPI_HandleTypeDef</h3><h4 id="SPI-InitTypeDef"><a href="#SPI-InitTypeDef" class="headerlink" title="SPI_InitTypeDef"></a>SPI_InitTypeDef</h4><ul>
 <li><p><strong>Mode</strong>：指定 SPI 工作模式</p>
 <ul>
