@@ -166,10 +166,10 @@
 <h1 id="二、I2C物理层"><a href="#二、I2C物理层" class="headerlink" title="二、I2C物理层"></a>二、I2C物理层</h1><h2 id="设备间的常用连接方式"><a href="#设备间的常用连接方式" class="headerlink" title="设备间的常用连接方式"></a>设备间的常用连接方式</h2><ul>
 <li>在一个I2C通信总线中，可以连接多个I2C通讯设备。支持<strong>多个通讯主机</strong>和<strong>多个通信从机</strong>。</li>
 </ul>
-<style>.warfkooxpgtl{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/1.png" class="warfkooxpgtl" alt="image-20240920153511997">
+<style>.cuguhlgflrbv{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/1.png" class="cuguhlgflrbv" alt="image-20240920153511997">
 
 <h1 id="三、I2C协议层"><a href="#三、I2C协议层" class="headerlink" title="三、I2C协议层"></a>三、I2C协议层</h1><p><strong><u>主机写数据到从机</u></strong></p>
-<style>.nsjumdgvqrvl{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/2.png" class="nsjumdgvqrvl" alt="image-20240920154403849">
+<style>.klcehbzeilmp{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/2.png" class="klcehbzeilmp" alt="image-20240920154403849">
 
 <ul>
 <li><strong>在I2C总线上，<u>每个设备的地址都是唯一的</u>，当主机<u>广播的地址</u>与某个设备地址相同时，设备会自动匹配，匹配成功后，这个设备就被选中了，没被选中的设备将会<u>忽略之后的数据信号</u>。</strong></li>
@@ -178,27 +178,27 @@
 <li><strong>I2C规定，通信时的时钟，<em>起始信号，停止信号<u>只能</u>由主机产生</em>。</strong></li>
 </ul>
 <p><u><strong>主机从从机读取数据</strong></u></p>
-<style>.rcsebtxqltqe{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/3.png" class="rcsebtxqltqe" alt="image-20240920160821303">
+<style>.jbdvqxnjbmra{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/3.png" class="jbdvqxnjbmra" alt="image-20240920160821303">
 
 <ul>
 <li><strong>在接受到任何数据时，无论时主机还是从机，都要做出应答信号（我还要数据）或非应答信号（我不要数据了）</strong></li>
 </ul>
 <p><strong><u>读写数据混合格式</u></strong></p>
-<style>.zxlrjrebihkj{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/4.png" class="zxlrjrebihkj" alt="8d6a0670-ca9e-473b-b625-d6da0fab7cee">
+<style>.dcvyqnabhrjd{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/4.png" class="dcvyqnabhrjd" alt="8d6a0670-ca9e-473b-b625-d6da0fab7cee">
 
 <ul>
 <li><strong>第一次通讯是确定读写从机设备内部寄存器或存储器的地址</strong></li>
 <li><strong>第二次则是<u>读或写</u>上一次确定内部寄存器或存储器的地址上面的数据。</strong></li>
 </ul>
 <h2 id="3-1-空闲状态"><a href="#3-1-空闲状态" class="headerlink" title="3.1 空闲状态"></a>3.1 空闲状态</h2><p><strong>I2C总线的SDA和SCL两条信号线<u><em>同时处于高电平</em></u>时，则为总线空闲状态，所有挂载在总线上的设备都输出高阻态（相当于断开与总线的连接），两条总线被上拉电阻的把电平拉高。</strong></p>
-<h2 id="3-2-起始信号与停止信号"><a href="#3-2-起始信号与停止信号" class="headerlink" title="3.2 起始信号与停止信号"></a>3.2 起始信号与停止信号</h2><style>.rbnnvlbvrlao{zoom:80%;}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/5.png" class="rbnnvlbvrlao" alt="image-20240920180358340">
+<h2 id="3-2-起始信号与停止信号"><a href="#3-2-起始信号与停止信号" class="headerlink" title="3.2 起始信号与停止信号"></a>3.2 起始信号与停止信号</h2><style>.jiqdbbbnpgpo{zoom:80%;}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/5.png" class="jiqdbbbnpgpo" alt="image-20240920180358340">
 
 <p><strong>起始信号：当<u>SCL线在高电平</u>期间 SDA 线<u>由<em>高电平向低电平切换</em></u></strong><br><strong>停止信号：当<u>SCL线在高电平</u>期间 SDA 线<u>由<em>低电平向高电平切换</em></u></strong></p>
 <p><strong>传输数据：<u>当SCL线在高电平</u>期间SDA 线<u>电平状态保持不变</u>，否则会误判为起始或停止</strong></p>
 <p><u><em><strong>起始信号和停止信号只能由主机产生</strong></em></u></p>
-<h2 id="3-3-数据有效性"><a href="#3-3-数据有效性" class="headerlink" title="3.3 数据有效性"></a>3.3 数据有效性</h2><style>.xoekjkuaqmdq{zoom:80%;}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/6.png" class="xoekjkuaqmdq" alt="021ca9d7-3767-4b9b-a25b-8905ab64172e">
+<h2 id="3-3-数据有效性"><a href="#3-3-数据有效性" class="headerlink" title="3.3 数据有效性"></a>3.3 数据有效性</h2><style>.nsatuyjpipfs{zoom:80%;}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/6.png" class="nsatuyjpipfs" alt="021ca9d7-3767-4b9b-a25b-8905ab64172e">
 
-<style>.fhkamhyfqkon{zoom:80%;}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/7.png" class="fhkamhyfqkon" alt="image-20240920182422762">
+<style>.fkxozxdjgsfi{zoom:80%;}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/7.png" class="fkxozxdjgsfi" alt="image-20240920182422762">
 
 <ul>
 <li><strong>SDA数据线在SCL的每个时钟周期（时钟脉冲）传输一位数据</strong></li>
@@ -206,7 +206,7 @@
 <li><strong>SCL为低电平时：SDA的数据无效，一般在这个时候SDA进行电平转化，为下次数据传输做准备</strong></li>
 <li><strong>数据和地址进行传输时，&#x3D;&#x3D;<em>先传输高位</em>&#x3D;&#x3D;，每次传输的字节不受限制</strong></li>
 </ul>
-<h2 id="3-4-地址及数据方向"><a href="#3-4-地址及数据方向" class="headerlink" title="3.4 地址及数据方向"></a>3.4 地址及数据方向</h2><style>.cpqyaqimiyle{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/8.png" class="cpqyaqimiyle" alt="image-20240920190314548">
+<h2 id="3-4-地址及数据方向"><a href="#3-4-地址及数据方向" class="headerlink" title="3.4 地址及数据方向"></a>3.4 地址及数据方向</h2><style>.bzgevmmmubnd{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/8.png" class="bzgevmmmubnd" alt="image-20240920190314548">
 
 <ul>
 <li><strong>读数据方向时，主机会&#x3D;&#x3D;释放对 SDA 信号线的控制&#x3D;&#x3D;，由&#x3D;&#x3D;从机控制 SDA 信号线&#x3D;&#x3D;（向主机发送数据），主机接收信号</strong></li>
@@ -223,20 +223,20 @@
 <li><p><strong>在第 9 个时钟时，数据发送端会<u><em>释放 SDA 的控制权</em></u>，由<u>数据接收端控制 SDA</u>，给发送端传输应答或非应答信号</strong></p>
 </li>
 </ul>
-<style>.rrdududzdvud{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/9.png" class="rrdududzdvud" alt="5a15817b-bf12-4c4d-b3cd-c0ad501b5e5e">
+<style>.yktpdwrstngm{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/9.png" class="yktpdwrstngm" alt="5a15817b-bf12-4c4d-b3cd-c0ad501b5e5e">
 
-<style>.aiwthmlrohmd{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/15.png" class="aiwthmlrohmd" alt="image-20240920222354354">
+<style>.lalyrcsoefcn{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/15.png" class="lalyrcsoefcn" alt="image-20240920222354354">
 
-<h2 id="3-6-写入一个字节时序"><a href="#3-6-写入一个字节时序" class="headerlink" title="3.6 写入一个字节时序"></a>3.6 写入一个字节时序</h2><style>.bsydcoswizun{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/10.png" class="bsydcoswizun" alt="image-20240920222442639">
+<h2 id="3-6-写入一个字节时序"><a href="#3-6-写入一个字节时序" class="headerlink" title="3.6 写入一个字节时序"></a>3.6 写入一个字节时序</h2><style>.gsxascbnuqbs{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/10.png" class="gsxascbnuqbs" alt="image-20240920222442639">
 
-<h2 id="3-7-读出一个字节时序"><a href="#3-7-读出一个字节时序" class="headerlink" title="3.7 读出一个字节时序"></a>3.7 读出一个字节时序</h2><style>.ljpsfhgssquu{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/11.png" class="ljpsfhgssquu" alt="image-20240920222451423">
+<h2 id="3-7-读出一个字节时序"><a href="#3-7-读出一个字节时序" class="headerlink" title="3.7 读出一个字节时序"></a>3.7 读出一个字节时序</h2><style>.catqhzyddvym{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/11.png" class="catqhzyddvym" alt="image-20240920222451423">
 
-<h2 id="3-8-单次写入多个字节时序"><a href="#3-8-单次写入多个字节时序" class="headerlink" title="3.8 单次写入多个字节时序"></a>3.8 单次写入多个字节时序</h2><style>.epiypzsinxvb{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/12.png" class="epiypzsinxvb" alt="image-20240920222600643">
+<h2 id="3-8-单次写入多个字节时序"><a href="#3-8-单次写入多个字节时序" class="headerlink" title="3.8 单次写入多个字节时序"></a>3.8 单次写入多个字节时序</h2><style>.fbydeebsbxsh{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/12.png" class="fbydeebsbxsh" alt="image-20240920222600643">
 
-<h2 id="3-9-单次读出多个字节时序"><a href="#3-9-单次读出多个字节时序" class="headerlink" title="3.9 单次读出多个字节时序"></a>3.9 单次读出多个字节时序</h2><style>.ilxpimogufbt{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/13.png" class="ilxpimogufbt" alt="image-20240920222553835">
+<h2 id="3-9-单次读出多个字节时序"><a href="#3-9-单次读出多个字节时序" class="headerlink" title="3.9 单次读出多个字节时序"></a>3.9 单次读出多个字节时序</h2><style>.xrekychhbvmw{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/13.png" class="xrekychhbvmw" alt="image-20240920222553835">
 
 <h1 id="四、软件IIC"><a href="#四、软件IIC" class="headerlink" title="四、软件IIC"></a>四、软件IIC</h1><h2 id="4-1-开始停止信号"><a href="#4-1-开始停止信号" class="headerlink" title="4.1 开始停止信号"></a>4.1 开始停止信号</h2><h1 id="五、硬件IIC"><a href="#五、硬件IIC" class="headerlink" title="五、硬件IIC"></a>五、硬件IIC</h1><h1 id="六、-实验"><a href="#六、-实验" class="headerlink" title="六、 实验"></a>六、 实验</h1><p><strong>实验：使用STM32F407作实验平台,将数据写入AT24C02，并读取出来</strong></p>
-<style>.xonvvffahttk{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/image-20250427144311918.png" class="xonvvffahttk" alt="image-20250427144311918">
+<style>.rboedmnhmlxk{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/image-20250427144311918.png" class="rboedmnhmlxk" alt="image-20250427144311918">
 
 <p><strong>ACK</strong>后面<strong>SDA变高</strong>，是从机<strong>停止发出低电平</strong>，<strong>SDA</strong>线出现<strong>短暂高电平</strong></p>
 <h2 id="1-Driver-i2c-h"><a href="#1-Driver-i2c-h" class="headerlink" title="1. Driver_i2c.h"></a>1. Driver_i2c.h</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __DRIVER_IIC_H </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __DRIVER_IIC_H </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ACK 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NACK 1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SCL_HIGH (GPIOB-&gt;ODR |= GPIO_ODR_ODR10)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SCL_LOW  (GPIOB-&gt;ODR &amp;= ~GPIO_ODR_ODR10)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SDA_HIGH (GPIOB-&gt;ODR |= GPIO_ODR_ODR11)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SDA_LOW (GPIOB-&gt;ODR &amp;= ~GPIO_ODR_ODR11)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> READ_SDA (GPIOB-&gt;IDR &amp; GPIO_IDR_IDR11)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 引脚初始化 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Driver_I2C_Init</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 开始信号 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Driver_I2C_Start</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 停止信号 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Driver_I2C2_Stop</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 应答信号 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Driver_I2C_Ack</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 非应答信号 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Driver_I2C_NAck</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 等待接收方的应答 */</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> <span class="title function_">Driver_I2C2_WaitAck</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 发送一个字节的数据 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Driver_I2C_SendByte</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> byte)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 接收一个字节的数据 */</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> <span class="title function_">Driver_I2C_ReadByte</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -245,9 +245,9 @@
 
 <h2 id="3-main-c"><a href="#3-main-c" class="headerlink" title="3. main.c"></a>3. main.c</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
-<style>.txthgpbnhrfq{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/14.png" class="txthgpbnhrfq" alt="image-20240921013215257">
+<style>.oktprdazbyxt{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/14.png" class="oktprdazbyxt" alt="image-20240921013215257">
 
-<style>.exkkromwzgpr{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/15.png" class="exkkromwzgpr" alt="image-20240921013424465">
+<style>.miggmsycldrz{}</style><img src="/2024/09/21/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/I2C/15.png" class="miggmsycldrz" alt="image-20240921013424465">
 
 
 
