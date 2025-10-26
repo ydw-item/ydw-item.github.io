@@ -162,19 +162,19 @@
 <h1 id="一、CAN总线结构"><a href="#一、CAN总线结构" class="headerlink" title="一、CAN总线结构"></a>一、CAN总线结构</h1><p>没有时钟线，<strong>半双工异步通信</strong>，CAN总线上的所有节点<strong>没有主从之分</strong>。任何节点都可以在<strong>总线空闲时</strong>主动向总线上发送消息，灵活性极高。</p>
 <p> CAN总线网络的结构有<strong>闭环</strong>和<strong>开环</strong>两种形式。</p>
 <p>下图所示，是<strong>闭环结构</strong>的CAN总线网络，<strong>总线两端各连接一个120欧的电阻</strong>，两根信号线<strong>形成回路</strong>。这种CAN总线网络由ISO 11898标准定义，是<strong>高速、短距离</strong>的CAN网络，通信速率为<strong>125kbit&#x2F;s</strong>到1Mbit&#x2F;s。在<strong>1Mbit&#x2F;s</strong>通讯速率时，总线长度<strong>最长达40m</strong>。</p>
-<style>.yjmkomjkscvp{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/1.png" class="yjmkomjkscvp" alt="image-20240108222241782">
+<style>.rhbttcvwocok{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/1.png" class="rhbttcvwocok" alt="image-20240108222241782">
 
 <p>下图是<strong>开环结构</strong>的CAN总线网络，两根信号线独立，各自<strong>串联一个2.2k欧</strong>的电阻。这种CAN总线网络由ISO11519-2标准定义，是<strong>低速、远距离</strong>的CAN网络，通信速率<strong>最高125kbit&#x2F;s</strong>。在<strong>40kbit&#x2F;s</strong>速率时，总线最长距离可达<strong>1000m</strong>。</p>
-<style>.ibniqdnxiqip{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/2.png" class="ibniqdnxiqip" alt="image-20240108222140342">
+<style>.uzlyxqwgxoxf{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/2.png" class="uzlyxqwgxoxf" alt="image-20240108222140342">
 
 <p> CAN总线的两根信号线通常采用的是<strong>双绞线</strong>，如下图4所示，传输的是<strong>差分信号</strong>，通过两根信号线的<strong>电压差CANH-CANL</strong>来表示总线电平。以差分信号传输信息具有抗干扰能力强，能有效抑制外部电磁干扰等优点，这也是CAN总线在工业上应用广泛的一个原因。</p>
 <p>与传输的逻辑信号1或0对应。对应于<strong>逻辑1</strong>的称为<strong>隐性电平</strong>，对应于<strong>逻辑0</strong>成为<strong>显性电平</strong>。</p>
 <p>上半部分为<strong>实际CANH和CANL的电平</strong>，下半部分对于的<strong>逻辑电平</strong></p>
-<style>.eisqkttbndnt{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/3.png" class="eisqkttbndnt" alt="image-20240110083328495">
+<style>.grrwwwqwjfvk{}</style><img src="/grrwwwqwjfvk" class="" title="&#x2F;2025&#x2F;09&#x2F;08&#x2F;%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&#x2F;CAN&#x2F;3.png &quot;&quot;&quot;image-20240110083328495&quot;">
 
 <p>CAN总线上的一个终端设备称为一个<strong>节点</strong>，在CAN网络中，<strong>没有主设备和从设备的区别</strong>。一个CAN节点的硬件部分一般由<strong>CAN控制器</strong>和<strong>CAN收发器</strong>两个部分组成。CAN控制器负责CAN总线的<strong>逻辑控制</strong>，实现CAN传输协议；CAN收发器主要负责MCU逻辑电平与CAN总线<strong>电平之间的转换</strong>。</p>
 <p><strong>线与逻辑</strong>：CAN总线具有“<strong>线与</strong>”的特性，也就是当由两个节点<strong>同时</strong>向总线发送信号时，一个是发送<strong>显性电平（逻辑0）</strong>，另一个发送<strong>隐性电平（逻辑1）</strong>，则总线呈现为<strong>显性电平</strong>。这个特性被用于<strong>总线总裁</strong>，也就是哪个节点优先占用总线进行发送操作。</p>
-<style>.wcijlbwobpnv{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/9.png" class="wcijlbwobpnv" alt="image-20250909153253976">
+<style>.golixmktoaes{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/9.png" class="golixmktoaes" alt="image-20250909153253976">
 
 <h1 id="二、波特率"><a href="#二、波特率" class="headerlink" title="二、波特率"></a>二、波特率</h1><h1 id="三、CAN各类型帧"><a href="#三、CAN各类型帧" class="headerlink" title="三、CAN各类型帧"></a>三、CAN各类型帧</h1><h2 id="3-1-数据帧"><a href="#3-1-数据帧" class="headerlink" title="3.1 数据帧"></a>3.1 数据帧</h2><p><strong>主动发送</strong>包含<strong>ID</strong>和<strong>数据</strong>的帧，用于**发送单元 **向 <strong>接收单元</strong> 传送数据的帧。</p>
 <h3 id="1-标准数据帧"><a href="#1-标准数据帧" class="headerlink" title="1. 标准数据帧"></a>1. 标准数据帧</h3><ul>
@@ -186,7 +186,7 @@
 <li><strong>优先级规则</strong>：只比较11位ID，ID值<strong>越小</strong>优先级<strong>越高</strong></li>
 <li><strong>兼容性</strong>：所有CAN控制器</li>
 </ul>
-<style>.ijoorurfylxt{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/4.png" class="ijoorurfylxt" alt="image-20250908145713779">
+<style>.dgehscwtoynd{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/4.png" class="dgehscwtoynd" alt="image-20250908145713779">
 
 <h3 id="2-扩展数据帧"><a href="#2-扩展数据帧" class="headerlink" title="2. 扩展数据帧"></a>2. 扩展数据帧</h3><ul>
 <li><p><strong>ID长度</strong>：29位标识符（11位基ID 和 新增的18位扩展ID）</p>
@@ -204,7 +204,7 @@
 <li><p><strong>兼容性</strong>：仅CAN 2.0B主动控制器完全支持</p>
 </li>
 </ul>
-<style>.uunmxrubcszy{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/5.png" class="uunmxrubcszy" alt="image-20250908145820821">
+<style>.yrdxgkiufuwm{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/5.png" class="yrdxgkiufuwm" alt="image-20250908145820821">
 
 <h3 id="3-标准数据帧与扩展数据帧的优先级"><a href="#3-标准数据帧与扩展数据帧的优先级" class="headerlink" title="3. 标准数据帧与扩展数据帧的优先级"></a>3. 标准数据帧与扩展数据帧的优先级</h3><p>  假设有一个标准帧（ID&#x3D;0x123）和一个扩展帧（基ID&#x3D;0x123）。</p>
 <ol>
@@ -236,7 +236,7 @@
 <li><p><strong>优先级规则</strong>：只比较11位ID，ID值<strong>越小</strong>优先级<strong>越高</strong></p>
 </li>
 </ul>
-<style>.yosowcmsxokl{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/6.png" class="yosowcmsxokl" alt="image-20250908145931171">
+<style>.lfgdxxqnbjqk{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/6.png" class="lfgdxxqnbjqk" alt="image-20250908145931171">
 
 
 
@@ -260,7 +260,7 @@
 <li><p><strong>优先级规则</strong>：先比较11位基ID，ID值<strong>越小</strong>优先级<strong>越高</strong></p>
 </li>
 </ul>
-<style>.oehfqtvkkpvc{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/7.png" class="oehfqtvkkpvc" alt="image-20250908145958310">
+<style>.hcxgzxlpelci{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/7.png" class="hcxgzxlpelci" alt="image-20250908145958310">
 
 <h3 id="3-标准遥控帧和扩展遥控帧的仲裁"><a href="#3-标准遥控帧和扩展遥控帧的仲裁" class="headerlink" title="3. 标准遥控帧和扩展遥控帧的仲裁"></a>3. 标准遥控帧和扩展遥控帧的仲裁</h3><p>​	规则与数据帧一致。</p>
 <ol>
@@ -272,7 +272,7 @@
 </ol>
 <p><strong>结论：一个标准遥控帧总是会优先于一个具有相同11位基ID的扩展遥控帧</strong></p>
 <h2 id="3-3-错误帧"><a href="#3-3-错误帧" class="headerlink" title="3.3 错误帧"></a>3.3 错误帧</h2><p>当总线上<strong>任何节点</strong>检测到<strong>任何一种错误</strong>时，它不会保持沉默，而是会<strong>立即、主动地</strong>发送一个错误帧来<strong>打断</strong>当前正在进行的数据传输，并<strong>通知网络上的所有节点</strong>：“刚收到的报文有错误！”</p>
-<style>.jdjirkdfzbpl{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/8.png" class="jdjirkdfzbpl" alt="image-20250908150548148">
+<style>.ftpfwyqcmkkp{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/8.png" class="ftpfwyqcmkkp" alt="image-20250908150548148">
 
 <ul>
 <li><p><strong>主动错误</strong></p>
@@ -292,10 +292,10 @@
 <li>应答错误</li>
 </ul>
 <h2 id="3-4-过载帧"><a href="#3-4-过载帧" class="headerlink" title="3.4 过载帧"></a>3.4 过载帧</h2><p><strong>过载帧</strong> 是由<strong>接收节点</strong> <strong>主动</strong> 发出的特殊帧，其目的是为了<strong>人为地插入额外的延迟</strong>，从而向网络中的其他节点宣告：“我目前太忙了，还没来得及处理上一帧数据，请稍微慢一点，等我准备好再发送下一帧。”</p>
-<style>.oytpvxopekyy{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/12.png" class="oytpvxopekyy" alt="image-20250909185943097">
+<style>.ymvpshdxsnvl{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/12.png" class="ymvpshdxsnvl" alt="image-20250909185943097">
 
 <h2 id="3-5-帧间空间"><a href="#3-5-帧间空间" class="headerlink" title="3.5 帧间空间"></a>3.5 帧间空间</h2><p>用于将<strong>数据帧</strong>、<strong>遥控帧</strong>与**前后的帧 ** <strong>分隔</strong> 开的帧</p>
-<h1 id="四、工作模式"><a href="#四、工作模式" class="headerlink" title="四、工作模式"></a>四、工作模式</h1><style>.jbgjwhqkrhdu{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/11.png" class="jbgjwhqkrhdu" alt="image-20250909112058478">
+<h1 id="四、工作模式"><a href="#四、工作模式" class="headerlink" title="四、工作模式"></a>四、工作模式</h1><style>.exyphxzpdllm{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/11.png" class="exyphxzpdllm" alt="image-20250909112058478">
 
 <h2 id="1-正常模式"><a href="#1-正常模式" class="headerlink" title="1. 正常模式"></a>1. 正常模式</h2><p>CAN 模块进行标准通信的模式</p>
 <p>可以正常地<strong>发送</strong>和<strong>接收</strong>报文，CANTX发送的数据也会发给CANRX</p>
@@ -341,9 +341,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-两种工作模式"><a href="#2-两种工作模式" class="headerlink" title="2. 两种工作模式"></a>2. 两种工作模式</h2><style>.csjbrefiqgty{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/10.png" class="csjbrefiqgty" alt="image-20250909171347425">
+<h2 id="2-两种工作模式"><a href="#2-两种工作模式" class="headerlink" title="2. 两种工作模式"></a>2. 两种工作模式</h2><style>.zkkyivvqyfgn{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/10.png" class="zkkyivvqyfgn" alt="image-20250909171347425">
 
-<style>.ujcwjpmewikd{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/13.png" class="ujcwjpmewikd" alt="image-20250910121655253">
+<style>.cnskxpjichzn{}</style><img src="/2025/09/08/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/CAN/13.png" class="cnskxpjichzn" alt="image-20250910121655253">
 
 <ul>
 <li><strong>标识符列表模式</strong></li>
